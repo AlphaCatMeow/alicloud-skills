@@ -16,7 +16,7 @@
 
 ## Build, Test, and Development Commands
 - Install skills locally:
-  - `npx skillfish add cinience/alicloud-skills --all -y --force`
+  - `npx skills add cinience/alicloud-skills --all -y --force`
 - Regenerate README skill index section:
   - `scripts/update_skill_index.sh`
   - Equivalent explicit form: `python3 scripts/generate_skill_index.py`

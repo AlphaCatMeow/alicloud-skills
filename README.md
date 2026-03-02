@@ -220,14 +220,18 @@ Return key status, audit results, and remediation suggestions."
 
 - `skills/` — canonical skill sources grouped by product line
   - `ai/` — Model Studio (capability-based groups)
-    - `text/` `image/` `audio/` `video/` `multimodal/` `search/` `misc/` `entry/`
-  - `storage/` — OSS
-  - `compute/` — ECS
+    - `text/` `image/` `audio/` `video/` `multimodal/` `search/` `recommendation/` `content/` `service/` `translation/` `platform/` `misc/` `entry/`
+  - `backup/` — BDRC / HBR
+  - `compute/` — ECS / FC / SWAS
+  - `data-analytics/` — DataAnalysisGBI
+  - `data-lake/` — DLF
+  - `database/` — AnalyticDB / RDS
   - `media/` — intelligent media creation
-  - `network/` — VPC / SLB / EIP
-  - `database/` — RDS / PolarDB / Redis
-  - `security/` — RAM / KMS / WAF
-  - `observability/` — SLS / ARMS / CloudMonitor
+  - `network/` — DNS
+  - `observability/` — SLS
+  - `platform/` — CLI / OpenAPI / docs workflows
+  - `security/` — content moderation / firewall / host security / identity / key management
+  - `storage/` — OSS
 - `examples/` — end-to-end stories and usage walkthroughs
 
 ## Brand Aliases
