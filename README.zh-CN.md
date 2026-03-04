@@ -279,6 +279,7 @@ dashscope_api_key = 你的DashScope API Key
 | database/rds | alicloud-database-rds-supabase | 通过 OpenAPI 管理 Alibaba Cloud RDS Supabase，覆盖实例生命周期与关键配置操作。 | `skills/database/rds/alicloud-database-rds-supabase` |
 | media/video | alicloud-media-video-translation | 通过 OpenAPI 创建和管理 Alibaba Cloud IMS 视频翻译任务，支持字幕、语音与人脸相关配置。 | `skills/media/video/alicloud-media-video-translation` |
 | network/dns | alicloud-network-dns-cli | Alibaba Cloud DNS（Alidns）CLI 技能。 | `skills/network/dns/alicloud-network-dns-cli` |
+| network/esa | alicloud-network-esa | 技能 `alicloud-network-esa` 的能力说明，详见对应 SKILL.md。 | `skills/network/esa/alicloud-network-esa` |
 | observability/sls | alicloud-observability-sls-log-query | 技能 `alicloud-observability-sls-log-query` 的能力说明，详见对应 SKILL.md。 | `skills/observability/sls/alicloud-observability-sls-log-query` |
 | platform/cli | alicloud-platform-aliyun-cli | 通用 Alibaba Cloud CLI（aliyun）技能，覆盖安装、凭证/配置、API 发现与跨产品 OpenAPI 命令行调用。 | `skills/platform/cli/alicloud-platform-aliyun-cli` |
 | platform/docs | alicloud-platform-docs-api-review | 自动评审最新 Alibaba Cloud 产品文档与 OpenAPI 文档，并输出优先级建议与证据。 | `skills/platform/docs/alicloud-platform-docs-api-review` |
