@@ -13,6 +13,7 @@ Category: service
 mkdir -p output/alicloud-compute-ecs
 python -m py_compile skills/compute/ecs/alicloud-compute-ecs/scripts/list_instances_all_regions.py
 python -m py_compile skills/compute/ecs/alicloud-compute-ecs/scripts/query_instance_usage.py
+python -m py_compile skills/compute/ecs/alicloud-compute-ecs/scripts/run_remote_command.py
 echo "py_compile_ok" > output/alicloud-compute-ecs/validate.txt
 ```
 
@@ -98,6 +99,7 @@ if __name__ == "__main__":
 
 - List all instances across regions (TSV/JSON): `scripts/list_instances_all_regions.py`
 - Query resource usage (CPU/Memory/Network) for one instance: `scripts/query_instance_usage.py`
+- Run remote commands via Cloud Assistant (RunCommand): `scripts/run_remote_command.py`
 - Summarize instance specs across regions: `scripts/summary_instance_specs.py`
 - Summarize instance counts by region (optional status breakdown): `scripts/summary_instances_by_region.py`
 - Summarize instance counts by status: `scripts/summary_instances_by_status.py`
@@ -130,6 +132,23 @@ Recommended default metrics:
 - `memory_usedutilization`
 - `InternetInRate`, `InternetOutRate`
 - `IntranetInRate`, `IntranetOutRate`
+
+### Python SDK: run remote command on one ECS instance
+
+Example (`ps -ef`):
+
+```bash
+python skills/compute/ecs/alicloud-compute-ecs/scripts/run_remote_command.py \
+  --instance-id i-xxxxxxxxxxxxxxxxx \
+  --region-id cn-shanghai \
+  --command 'ps -ef' \
+  --output output/alicloud-compute-ecs/runcommand-i-xxxxxxxxxxxxxxxxx-ps-ef.json
+```
+
+Behavior:
+- Submit `RunCommand` with `RunShellScript`.
+- Poll `DescribeInvocationResults` until final status.
+- Decode base64 stdout and save normalized JSON evidence.
 
 ### Python SDK: list instances for all regions
 
@@ -318,6 +337,9 @@ If you need to save responses or generated artifacts, write them under:
 
 Resource usage query evidence example:
 `output/alicloud-compute-ecs/ecs-usage-<instance-id>-<window>.json`
+
+Remote command evidence example:
+`output/alicloud-compute-ecs/runcommand-<instance-id>-<name>.json`
 
 ## References
 
