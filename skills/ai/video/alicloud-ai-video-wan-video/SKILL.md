@@ -146,6 +146,13 @@ video_url = final.output.get("video_url")
 - Do not block the UI without progress updates.
 - Do not retry blindly on 4xx; handle validation failures explicitly.
 
+## Workflow
+
+1) Confirm user intent, region, identifiers, and whether the operation is read-only or mutating.
+2) Run one minimal read-only query first to verify connectivity and permissions.
+3) Execute the target operation with explicit parameters and bounded scope.
+4) Verify results and save output/evidence files.
+
 ## References
 
 - See `references/api_reference.md` for DashScope SDK mapping and async handling notes.

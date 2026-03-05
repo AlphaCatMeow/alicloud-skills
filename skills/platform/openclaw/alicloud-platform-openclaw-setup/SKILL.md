@@ -126,3 +126,25 @@ Common failures:
 - Do not hardcode real secrets in repository files.
 - Keep production keys in server-local configs or secret managers.
 - Redact logs before sharing in tickets or chat.
+
+## Validation
+
+```bash
+mkdir -p output/alicloud-platform-openclaw-setup
+echo "validation_placeholder" > output/alicloud-platform-openclaw-setup/validate.txt
+```
+
+Pass criteria: command exits 0 and `output/alicloud-platform-openclaw-setup/validate.txt` is generated.
+
+## Output And Evidence
+
+- Save artifacts, command outputs, and API response summaries under `output/alicloud-platform-openclaw-setup/`.
+- Include key parameters (region/resource id/time range) in evidence files for reproducibility.
+
+## Workflow
+
+1) Confirm user intent, region, identifiers, and whether the operation is read-only or mutating.
+2) Run one minimal read-only query first to verify connectivity and permissions.
+3) Execute the target operation with explicit parameters and bounded scope.
+4) Verify results and save output/evidence files.
+

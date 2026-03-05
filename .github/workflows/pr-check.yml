@@ -31,3 +31,6 @@ jobs:
 
       - name: Governance Checks
         run: bash scripts/verify_governance.sh
+
+      - name: Skill Lint
+        run: python3 scripts/lint_skills.py

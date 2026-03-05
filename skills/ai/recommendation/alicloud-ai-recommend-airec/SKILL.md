@@ -1,6 +1,6 @@
 ---
 name: alicloud-ai-recommend-airec
-description: Manage Alibaba Cloud AIRec (Airec) via OpenAPI/SDK. Use for listing resources, creating or updating configurations, querying status, and troubleshooting workflows for this product.
+description: Manage Alibaba Cloud AIRec (Airec) via OpenAPI/SDK. Use whenever the user needs recommendation-engine resource operations in Alibaba Cloud, including list/create/update flows, status inspection, and troubleshooting AIRec configuration or runtime issues.
 ---
 
 Category: service
@@ -54,6 +54,29 @@ The script writes API inventory artifacts under the skill output directory.
 
 If you need to save responses or generated artifacts, write them under:
 `output/alicloud-ai-recommend-airec/`
+
+## Validation
+
+```bash
+mkdir -p output/alicloud-ai-recommend-airec
+for f in skills/ai/recommendation/alicloud-ai-recommend-airec/scripts/*.py; do
+  python3 -m py_compile "$f"
+done
+echo "py_compile_ok" > output/alicloud-ai-recommend-airec/validate.txt
+```
+
+Pass criteria: command exits 0 and `output/alicloud-ai-recommend-airec/validate.txt` is generated.
+
+## Output And Evidence
+
+- Save artifacts, command outputs, and API response summaries under `output/alicloud-ai-recommend-airec/`.
+- Include key parameters (region/resource id/time range) in evidence files for reproducibility.
+
+## Prerequisites
+
+- Configure least-privilege Alibaba Cloud credentials before execution.
+- Prefer environment variables: `ALICLOUD_ACCESS_KEY_ID`, `ALICLOUD_ACCESS_KEY_SECRET`, optional `ALICLOUD_REGION_ID`.
+- If region is unclear, ask the user before running mutating operations.
 
 ## References
 

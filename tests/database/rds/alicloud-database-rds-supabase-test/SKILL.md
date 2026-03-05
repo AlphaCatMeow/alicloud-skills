@@ -5,19 +5,19 @@ description: Minimal smoke test for RDS Supabase skill. Validate endpoint reacha
 
 Category: test
 
-# RDS Supabase 最小可用测试
+# RDS Supabase Minimal Viable Test
 
-## 前置条件
+## Prerequisites
 
-- 已配置 AK/SK 与 region。
-- 目标技能：`skills/database/rds/alicloud-database-rds-supabase/`。
+- AK/SK and region are configured.
+- GoalsSkill: `skills/database/rds/alicloud-database-rds-supabase/`。
 
-## 测试步骤
+## Test Steps
 
 1) 读取技能中 API 基础信息。
 2) 调用一个只读列表或详情 API。
 3) 记录实例数或错误码。
 
-## 期望结果
+## Expected Results
 
 - 可完成一次最小只读调用。

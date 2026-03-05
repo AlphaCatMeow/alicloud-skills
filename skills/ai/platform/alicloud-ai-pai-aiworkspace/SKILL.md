@@ -1,6 +1,6 @@
 ---
 name: alicloud-ai-pai-aiworkspace
-description: Manage Alibaba Cloud Platform for Artificial Intelligence PAI - AIWorkspace (AIWorkSpace) via OpenAPI/SDK. Use for listing resources, creating or updating configurations, querying status, and troubleshooting workflows for this product.
+description: Manage Alibaba Cloud PAI AIWorkspace (AIWorkSpace) via OpenAPI/SDK. Use whenever the user is operating AIWorkspace resources such as workspace/project inventory, create/update actions, status queries, permission or configuration troubleshooting, or automation around PAI workspace lifecycle.
 ---
 
 Category: service
@@ -54,6 +54,29 @@ The script writes API inventory artifacts under the skill output directory.
 
 If you need to save responses or generated artifacts, write them under:
 `output/alicloud-ai-pai-aiworkspace/`
+
+## Validation
+
+```bash
+mkdir -p output/alicloud-ai-pai-aiworkspace
+for f in skills/ai/platform/alicloud-ai-pai-aiworkspace/scripts/*.py; do
+  python3 -m py_compile "$f"
+done
+echo "py_compile_ok" > output/alicloud-ai-pai-aiworkspace/validate.txt
+```
+
+Pass criteria: command exits 0 and `output/alicloud-ai-pai-aiworkspace/validate.txt` is generated.
+
+## Output And Evidence
+
+- Save artifacts, command outputs, and API response summaries under `output/alicloud-ai-pai-aiworkspace/`.
+- Include key parameters (region/resource id/time range) in evidence files for reproducibility.
+
+## Prerequisites
+
+- Configure least-privilege Alibaba Cloud credentials before execution.
+- Prefer environment variables: `ALICLOUD_ACCESS_KEY_ID`, `ALICLOUD_ACCESS_KEY_SECRET`, optional `ALICLOUD_REGION_ID`.
+- If region is unclear, ask the user before running mutating operations.
 
 ## References
 

@@ -5,7 +5,7 @@ description: Refresh the Model Studio models crawl and regenerate derived summar
 
 Category: task
 
-# 阿里云 Model Studio 抓取与 Skills 生成
+# Alibaba Cloud Model Studio Crawl and Skill Generation
 
 ## Prerequisites
 
@@ -45,6 +45,23 @@ python3 skills/ai/misc/alicloud-ai-misc-crawl-and-skill/scripts/refresh_alicloud
 
 - Do not invent model IDs or API endpoints; only use links present on the models page.
 - After regeneration, update `README.md`, `README.en.md`, and `README.zh-TW.md` if skills list changed.
+## Validation
+
+```bash
+mkdir -p output/alicloud-ai-misc-crawl-and-skill
+for f in skills/ai/misc/alicloud-ai-misc-crawl-and-skill/scripts/*.py; do
+  python3 -m py_compile "$f"
+done
+echo "py_compile_ok" > output/alicloud-ai-misc-crawl-and-skill/validate.txt
+```
+
+Pass criteria: command exits 0 and `output/alicloud-ai-misc-crawl-and-skill/validate.txt` is generated.
+
+## Output And Evidence
+
+- Save artifacts, command outputs, and API response summaries under `output/alicloud-ai-misc-crawl-and-skill/`.
+- Include key parameters (region/resource id/time range) in evidence files for reproducibility.
+
 ## References
 
 - Source list: `references/sources.md`

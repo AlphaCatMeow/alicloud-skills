@@ -5,63 +5,63 @@ description: Route Alibaba Cloud Model Studio requests to the right local skill 
 
 Category: task
 
-# 阿里云 Model Studio 入口（路由）
+# Alibaba Cloud Model Studio Entry (Routing)
 
-将需求路由到已存在的本仓库技能，避免重复模型/参数内容。
+Route requests to existing local skills to avoid duplicating model/parameter details.
 
 ## Prerequisites
 
-- 安装 SDK（建议在虚拟环境中，避免 PEP 668 限制）：
+- Install SDK (virtual environment recommended to avoid PEP 668 restrictions):
 
 ```bash
 python3 -m venv .venv
 . .venv/bin/activate
 python -m pip install dashscope
 ```
-- 配置 `DASHSCOPE_API_KEY`（环境变量优先；或在 `~/.alibabacloud/credentials` 里设置 `dashscope_api_key`）
+- Configure `DASHSCOPE_API_KEY` (environment variable preferred; or `dashscope_api_key` in `~/.alibabacloud/credentials`).
 
-## 路由表（当前仓库已支持）
+## Routing Table (currently supported in this repo)
 
-| 需求 | 目标技能 |
+| Need | Target skill |
 | --- | --- |
-| 文生图 / 图像生成 | `skills/ai/image/alicloud-ai-image-qwen-image/` |
-| 图像编辑 | `skills/ai/image/alicloud-ai-image-qwen-image-edit/` |
-| 文生视频 / 图生视频（i2v） | `skills/ai/video/alicloud-ai-video-wan-video/` |
-| 参考生视频（r2v） | `skills/ai/video/alicloud-ai-video-wan-r2v/` |
-| 语音合成（TTS） | `skills/ai/audio/alicloud-ai-audio-tts/` |
-| 语音识别/转写（ASR） | `skills/ai/audio/alicloud-ai-audio-asr/` |
-| 实时语音合成 | `skills/ai/audio/alicloud-ai-audio-tts-realtime/` |
-| 音色复刻（Voice Clone） | `skills/ai/audio/alicloud-ai-audio-tts-voice-clone/` |
-| 音色设计（Voice Design） | `skills/ai/audio/alicloud-ai-audio-tts-voice-design/` |
-| 向量检索 | `skills/ai/search/alicloud-ai-search-dashvector/` 或 `skills/ai/search/alicloud-ai-search-opensearch/` 或 `skills/ai/search/alicloud-ai-search-milvus/` |
-| 文档理解 | `skills/ai/text/alicloud-ai-text-document-mind/` |
-| 模型清单抓取/更新 | `skills/ai/misc/alicloud-ai-misc-crawl-and-skill/` |
+| Text-to-image / image generation | `skills/ai/image/alicloud-ai-image-qwen-image/` |
+| Image editing | `skills/ai/image/alicloud-ai-image-qwen-image-edit/` |
+| Text-to-video / image-to-video (i2v) | `skills/ai/video/alicloud-ai-video-wan-video/` |
+| Reference-to-video (r2v) | `skills/ai/video/alicloud-ai-video-wan-r2v/` |
+| Text-to-speech (TTS) | `skills/ai/audio/alicloud-ai-audio-tts/` |
+| Speech recognition/transcription (ASR) | `skills/ai/audio/alicloud-ai-audio-asr/` |
+| Realtime TTS | `skills/ai/audio/alicloud-ai-audio-tts-realtime/` |
+| Voice clone | `skills/ai/audio/alicloud-ai-audio-tts-voice-clone/` |
+| Voice design | `skills/ai/audio/alicloud-ai-audio-tts-voice-design/` |
+| Vector retrieval | `skills/ai/search/alicloud-ai-search-dashvector/` or `skills/ai/search/alicloud-ai-search-opensearch/` or `skills/ai/search/alicloud-ai-search-milvus/` |
+| Document understanding | `skills/ai/text/alicloud-ai-text-document-mind/` |
+| Model list crawl/update | `skills/ai/misc/alicloud-ai-misc-crawl-and-skill/` |
 
-## 不匹配时
+## When Not Matched
 
-- 先澄清模型能力或输入输出类型。
-- 若仓库缺少对应能力，建议新增技能后再执行。
+- Clarify model capability and input/output type first.
+- If capability is missing in repo, add a new skill first.
 
-## 本仓库暂缺的常见能力（可优先补齐）
+## Common Missing Capabilities in This Repo (recommended next)
 
-- 文本生成/对话（LLM）与多模态理解
-- 文本/多模态向量与 Rerank
-- 视频编辑（风格/口型/剪辑）
+- text generation/chat (LLM) and multimodal understanding
+- text/multimodal embeddings and rerank
+- video editing (style/lip-sync/editing)
 
-- 多模态/ASR 下载失败：优先用上面的公开 URL。
-- ASR 参数报错：使用 `input_audio.data` 的 data URI。
-- 多模态向量 400：确认 `input.contents` 是数组。
+- For multimodal/ASR download failures, prefer public URLs listed above.
+- For ASR parameter errors, use data URI in `input_audio.data`.
+- For multimodal embedding 400, ensure `input.contents` is an array.
 
-## 异步任务轮询模板（视频/长耗时任务）
+## Async Task Polling Template (video/long-running tasks)
 
-当 `X-DashScope-Async: enable` 返回 `task_id` 时，用以下方式轮询：
+When `X-DashScope-Async: enable` returns `task_id`, poll as follows:
 
 ```
 GET https://dashscope.aliyuncs.com/api/v1/tasks/<task_id>
 Authorization: Bearer $DASHSCOPE_API_KEY
 ```
 
-结果字段示例（成功）：
+Example result fields (success):
 
 ```
 {
@@ -72,20 +72,42 @@ Authorization: Bearer $DASHSCOPE_API_KEY
 }
 ```
 
-说明：
-- 轮询间隔建议 15–20 秒，最多 10 次。
-- 成功后下载 `output.video_url`。
+Notes:
+- Recommended polling interval: 15-20 seconds, max 10 attempts.
+- After success, download `output.video_url`.
 
-## 选择问题（不确定时提问）
+## Clarifying questions (ask when uncertain)
 
-1. 你要处理的是文本、图片、音频还是视频？
-2. 这是“生成”还是“编辑/理解/检索”？
-3. 是否需要语音（TTS/ASR）或向量检索（Embedding/Rerank）？
-4. 你要直接运行 SDK 脚本，还是只需要 API/参数说明？
+1. Are you working with text, image, audio, or video?
+2. Is this generation, editing/understanding, or retrieval?
+3. Do you need speech (TTS/ASR) or vector retrieval (embedding/rerank)?
+4. Do you want runnable SDK scripts or just API/parameter guidance?
 
-## 参考
+## References
 
-- 模型清单与链接：`output/alicloud-model-studio-models-summary.md`
-- 具体 API/参数/示例：对应子技能的 `SKILL.md` 与 `references/*.md`
+- Model list and links:`output/alicloud-model-studio-models-summary.md`
+- API/parameters/examples: see target sub-skill `SKILL.md` and `references/*.md`
 
-- 官方文档来源清单：`references/sources.md`
+- Official source list:`references/sources.md`
+
+## Validation
+
+```bash
+mkdir -p output/alicloud-ai-entry-modelstudio
+echo "validation_placeholder" > output/alicloud-ai-entry-modelstudio/validate.txt
+```
+
+Pass criteria: command exits 0 and `output/alicloud-ai-entry-modelstudio/validate.txt` is generated.
+
+## Output And Evidence
+
+- Save artifacts, command outputs, and API response summaries under `output/alicloud-ai-entry-modelstudio/`.
+- Include key parameters (region/resource id/time range) in evidence files for reproducibility.
+
+## Workflow
+
+1) Confirm user intent, region, identifiers, and whether the operation is read-only or mutating.
+2) Run one minimal read-only query first to verify connectivity and permissions.
+3) Execute the target operation with explicit parameters and bounded scope.
+4) Verify results and save output/evidence files.
+

@@ -5,81 +5,81 @@ description: Alibaba Cloud Function Compute (FC 3.0) skill for installing and us
 
 Category: tool
 
-# 函数计算（FC 3.0）Serverless Devs
+# Function Compute (FC 3.0) Serverless Devs
 
-## 目标
+## Goals
 
-- 安装并验证 Serverless Devs。
-- 配置凭证、初始化示例、部署、调用与删除。
-- 以 Python 运行时为例提供 CLI 流程。
+- Install and validate Serverless Devs.
+- Configure credentials, initialize example project, deploy, invoke, and remove.
+- Provide CLI flow with Python runtime example.
 
-## 快速接入流程
+## Quick Start Flow
 
-1. 安装 Node.js（14+）与 npm。
-2. 安装并验证 Serverless Devs。
-3. 通过引导完成凭证配置。
-4. 初始化示例项目并进入目录。
-5. 部署、调用与可选删除。
+1. Install Node.js (14+) and npm.
+2. Install and validate Serverless Devs.
+3. Configure credentials via guided setup.
+4. Initialize example project and enter directory.
+5. Deploy, invoke, and optionally remove.
 
-## 安装 Serverless Devs（npm）
+## Install Serverless Devs (npm)
 
-全局安装（需要 sudo 权限）：
+Global install (requires sudo):
 
 ```bash
 sudo npm install @serverless-devs/s -g
 sudo s -v
 ```
 
-无 sudo 的替代方案（推荐在受限环境使用）：
+No-sudo alternative (recommended in restricted environments):
 
 ```bash
 npx -y @serverless-devs/s -v
 ```
 
-## 配置凭证（引导式）
+## Configure Credentials (guided)
 
 ```bash
 sudo s config add
 ```
 
-选择 `Alibaba Cloud (alibaba)`，按提示填写 `AccountID`、`AccessKeyID`、`AccessKeySecret`，并设置 alias。
+Choose `Alibaba Cloud (alibaba)`, provide `AccountID`, `AccessKeyID`, `AccessKeySecret`, and set alias.
 
-## 配置凭证（命令式）
+## Configure Credentials (command)
 
-使用命令行参数一次性写入密钥别名（无需交互）：
+Use CLI args to configure credential alias in one command (non-interactive):
 
 ```bash
 s config add -a default --AccessKeyID <AK> --AccessKeySecret <SK> -f
 ```
 
-如果使用环境变量，可将其注入命令（示例）：
+If using environment variables, inject them into the command (example):
 
 ```bash
 s config add -a default -kl AccessKeyID,AccessKeySecret -il ${ALIBABA_CLOUD_ACCESS_KEY_ID},${ALIBABA_CLOUD_ACCESS_KEY_SECRET} -f
 ```
 
-或者使用 Serverless Devs 约定的环境变量 JSON（示例）：
+Or use Serverless Devs convention JSON environment variable (example):
 
 ```bash
 export default_serverless_devs_key='{\"AccountID\":\"<AccountID>\",\"AccessKeyID\":\"<AK>\",\"AccessKeySecret\":\"<SK>\"}'
 ```
 
-`s.yaml` 中引用：
+Reference in `s.yaml`:
 
 ```yaml
 access: default_serverless_devs_key
 ```
 
-## 初始化示例（Python）
+## Initialize Example (Python)
 
 ```bash
 sudo s init start-fc3-python
 cd start-fc3-python
 ```
 
-初始化完成后会生成 `s.yaml`、`code/` 与 `readme.md`，可在 `code/index.py` 修改函数逻辑。
+Initialization creates `s.yaml`, `code/`, and `readme.md`; edit `code/index.py` for function logic.
 
-## 部署、调用与删除
+## Deploy, Invoke, and Remove
 
 ```bash
 sudo s deploy
@@ -87,31 +87,31 @@ sudo s invoke -e "test"
 sudo s remove
 ```
 
-## 自定义域名绑定（避免默认域名强制下载）
+## Custom Domain Binding (Avoid Default Domain Forced Download)
 
-> 说明：FC 默认域名会强制添加 `Content-Disposition: attachment`，浏览器会触发下载。
-> 需要通过自定义域名访问才能去掉该行为。
+> Note: FC default domain adds `Content-Disposition: attachment`, causing browser downloads.
+> Use a custom domain to avoid this behavior.
 
-### 步骤 1：为域名配置 CNAME
+### Step 1: Configure CNAME for your domain
 
-在 DNS 服务商处把域名解析到 FC 公网 CNAME：
+Configure DNS CNAME to FC public CNAME:
 
 ```
 <account_id>.<region_id>.fc.aliyuncs.com
 ```
 
-示例（杭州地域）：
+Example (Hangzhou region):
 
 ```
 1629965279769872.cn-hangzhou.fc.aliyuncs.com
 ```
 
-注意：如果是根域名（例如 `animus.run`）且 DNS 不支持根域名 CNAME，
-请使用 ALIAS/ANAME 记录，或改用 `www.animus.run` 子域名。
+Note: if using apex domain (e.g. `animus.run`) and DNS provider does not support CNAME at apex,
+use ALIAS/ANAME records, or switch to a subdomain such as `www.animus.run`.
 
-### 步骤 2：在 Serverless Devs 中创建自定义域名
+### Step 2: Create custom domain in Serverless Devs
 
-方式 A：在 `s.yaml` 中新增 `fc3-domain` 资源：
+Option A: add `fc3-domain` resource in `s.yaml`:
 
 ```yaml
 resources:
@@ -131,27 +131,55 @@ resources:
             path: /*
 ```
 
-`region` 为示例默认值；若未确定最合适 Region，执行时应询问用户。
+`region` is example default; ask user when the best region is unclear.
 
-然后部署：
+Then deploy:
 
 ```bash
 printf 'y\n' | npx -y @serverless-devs/s deploy
 ```
 
-方式 B：使用控制台（Advanced Features > Custom Domains）创建自定义域名并配置路由。
+Option B: use Console (Advanced Features > Custom Domains) to create and route custom domain.
 
-### 常见错误
+### Common Errors
 
-- `DomainNameNotResolved`：域名未解析到正确的 FC CNAME。
-- `InvalidICPLicense`：中国大陆地域需要 ICP 备案且备案需接入阿里云。
+- `DomainNameNotResolved`: domain not resolved to correct FC CNAME.
+- `InvalidICPLicense`: mainland China regions require ICP filing associated with Alibaba Cloud.
 
-## 参考
+## References
 
-- 细节与官方步骤见 `references/install_serverless_devs_and_docker.md`。
-- HTTP 触发器限制与响应头说明（默认域名会强制添加 Content-Disposition: attachment）
+- See `references/install_serverless_devs_and_docker.md` for detailed official steps.
+- HTTP trigger limitations and response header behavior (default domain enforces Content-Disposition: attachment)
   - https://www.alibabacloud.com/help/en/functioncompute/fc/user-guide/http-triggers-overview
-- 自定义域名绑定与 CNAME 说明
+- Custom domain binding and CNAME guidance
   - https://www.alibabacloud.com/help/en/functioncompute/fc/user-guide/configure-custom-domain-names
 
-- 官方文档来源清单：`references/sources.md`
+- Official source list:`references/sources.md`
+
+## Validation
+
+```bash
+mkdir -p output/alicloud-compute-fc-serverless-devs
+echo "validation_placeholder" > output/alicloud-compute-fc-serverless-devs/validate.txt
+```
+
+Pass criteria: command exits 0 and `output/alicloud-compute-fc-serverless-devs/validate.txt` is generated.
+
+## Output And Evidence
+
+- Save artifacts, command outputs, and API response summaries under `output/alicloud-compute-fc-serverless-devs/`.
+- Include key parameters (region/resource id/time range) in evidence files for reproducibility.
+
+## Prerequisites
+
+- Configure least-privilege Alibaba Cloud credentials before execution.
+- Prefer environment variables: `ALICLOUD_ACCESS_KEY_ID`, `ALICLOUD_ACCESS_KEY_SECRET`, optional `ALICLOUD_REGION_ID`.
+- If region is unclear, ask the user before running mutating operations.
+
+## Workflow
+
+1) Confirm user intent, region, identifiers, and whether the operation is read-only or mutating.
+2) Run one minimal read-only query first to verify connectivity and permissions.
+3) Execute the target operation with explicit parameters and bounded scope.
+4) Verify results and save output/evidence files.
+

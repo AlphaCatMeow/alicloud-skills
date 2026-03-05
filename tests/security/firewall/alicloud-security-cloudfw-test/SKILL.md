@@ -5,19 +5,19 @@ description: Minimal smoke test for Cloud Firewall skill. Validate read-only inv
 
 Category: test
 
-# CloudFW 最小可用测试
+# CloudFW Minimal Viable Test
 
-## 前置条件
+## Prerequisites
 
-- 已配置 AK/SK 与 region。
-- 目标技能：`skills/security/firewall/alicloud-security-cloudfw/`。
+- AK/SK and region are configured.
+- GoalsSkill: `skills/security/firewall/alicloud-security-cloudfw/`。
 
-## 测试步骤
+## Test Steps
 
 1) 先跑元数据 API 列表脚本。
 2) 选择一个只读列表/详情 API 执行。
 3) 记录请求摘要和响应摘要。
 
-## 期望结果
+## Expected Results
 
 - 可拿到资源列表或明确无权限提示。

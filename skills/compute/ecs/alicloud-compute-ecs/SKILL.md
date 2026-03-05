@@ -57,7 +57,7 @@ Prefer the Python SDK for all examples and execution.
 
 ### Python SDK quickstart (list instances)
 
-推荐使用虚拟环境（避免 PEP 668 的系统安装限制）。
+Virtual environment is recommended (avoid PEP 668 system install restrictions).
 
 ```bash
 python3 -m venv .venv

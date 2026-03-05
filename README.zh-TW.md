@@ -277,17 +277,22 @@ dashscope_api_key = 你的DashScope API Key
 | database/rds | alicloud-database-rds-supabase | 透過 OpenAPI 管理 Alibaba Cloud RDS Supabase，涵蓋實例生命週期與關鍵設定操作。 | `skills/database/rds/alicloud-database-rds-supabase` |
 | media/ice | alicloud-media-ice | 技能 `alicloud-media-ice` 的能力說明，詳見對應 SKILL.md。 | `skills/media/ice/alicloud-media-ice` |
 | media/live | alicloud-media-live | 技能 `alicloud-media-live` 的能力說明，詳見對應 SKILL.md。 | `skills/media/live/alicloud-media-live` |
+| media/mps | alicloud-media-mps | 技能 `alicloud-media-mps` 的能力說明，詳見對應 SKILL.md。 | `skills/media/mps/alicloud-media-mps` |
 | media/video | alicloud-media-video-translation | 透過 OpenAPI 建立與管理 Alibaba Cloud IMS 影片翻譯任務，支援字幕、語音與人臉相關設定。 | `skills/media/video/alicloud-media-video-translation` |
 | media/vod | alicloud-media-vod | 技能 `alicloud-media-vod` 的能力說明，詳見對應 SKILL.md。 | `skills/media/vod/alicloud-media-vod` |
+| network/cdn | alicloud-network-cdn | 透過 OpenAPI/SDK 管理 Alibaba Cloud CDN，涵蓋網域生命週期、快取刷新與預熱、HTTPS 憑證更新及日誌監控查詢。 | `skills/network/cdn/alicloud-network-cdn` |
 | network/dns | alicloud-network-dns-cli | Alibaba Cloud DNS（Alidns）CLI 技能，支援查詢、新增與更新 DNS 記錄。 | `skills/network/dns/alicloud-network-dns-cli` |
 | network/esa | alicloud-network-esa | 技能 `alicloud-network-esa` 的能力說明，詳見對應 SKILL.md。 | `skills/network/esa/alicloud-network-esa` |
 | network/slb | alicloud-network-alb | 管理與排障阿里雲 ALB（應用型負載均衡）。涵蓋實例、監聽、伺服器群組、轉發規則、憑證、ACL、安全策略、健康檢查及非同步任務輪詢的全生命週期管理，包含 28 個 CLI 腳本。 | `skills/network/slb/alicloud-network-alb` |
+| observability/pts | alicloud-observability-pts | 技能 `alicloud-observability-pts` 的能力說明，詳見對應 SKILL.md。 | `skills/observability/pts/alicloud-observability-pts` |
 | observability/sls | alicloud-observability-sls-log-query | 技能 `alicloud-observability-sls-log-query` 的能力說明，詳見對應 SKILL.md。 | `skills/observability/sls/alicloud-observability-sls-log-query` |
 | platform/cli | alicloud-platform-aliyun-cli | 通用 Alibaba Cloud CLI（aliyun）技能，涵蓋安裝、憑證/設定、API 探索與跨產品 OpenAPI 命令列呼叫。 | `skills/platform/cli/alicloud-platform-aliyun-cli` |
+| platform/devops | alicloud-platform-devops | 技能 `alicloud-platform-devops` 的能力說明，詳見對應 SKILL.md。 | `skills/platform/devops/alicloud-platform-devops` |
 | platform/docs | alicloud-platform-docs-api-review | 自動評審最新 Alibaba Cloud 產品文件與 OpenAPI 文件，並輸出優先級建議與證據。 | `skills/platform/docs/alicloud-platform-docs-api-review` |
 | platform/docs | alicloud-platform-multicloud-docs-api-benchmark | 對阿里雲及主流雲廠商同類產品文件與 API 文件進行基準對比並給出改進建議。 | `skills/platform/docs/alicloud-platform-multicloud-docs-api-benchmark` |
 | platform/openapi | alicloud-platform-openapi-product-api-discovery | 發現並對齊 Alibaba Cloud 產品目錄與 OpenAPI 中繼資料，用於覆蓋分析與技能規劃。 | `skills/platform/openapi/alicloud-platform-openapi-product-api-discovery` |
 | platform/openclaw | alicloud-platform-openclaw-setup | 技能 `alicloud-platform-openclaw-setup` 的能力說明，詳見對應 SKILL.md。 | `skills/platform/openclaw/alicloud-platform-openclaw-setup` |
+| platform/skills | alicloud-skill-creator | 技能 `alicloud-skill-creator` 的能力說明，詳見對應 SKILL.md。 | `skills/platform/skills/alicloud-skill-creator` |
 | security/content | alicloud-security-content-moderation-green | 透過 OpenAPI/SDK 管理 Alibaba Cloud Content Moderation (Green)，用於資源查詢、建立或更新配置、狀態查詢與故障排查。 | `skills/security/content/alicloud-security-content-moderation-green` |
 | security/firewall | alicloud-security-cloudfw | 透過 OpenAPI/SDK 管理 Alibaba Cloud Cloud Firewall (Cloudfw)，用於資源查詢、建立或更新配置、狀態查詢與故障排查。 | `skills/security/firewall/alicloud-security-cloudfw` |
 | security/host | alicloud-security-center-sas | 透過 OpenAPI/SDK 管理 Alibaba Cloud Security Center (Sas)，用於資源查詢、建立或更新配置、狀態查詢與故障排查。 | `skills/security/host/alicloud-security-center-sas` |

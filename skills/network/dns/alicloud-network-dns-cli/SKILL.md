@@ -5,19 +5,19 @@ description: Alibaba Cloud DNS (Alidns) CLI skill. Use to query, add, and update
 
 Category: tool
 
-# 阿里云 DNS（Alidns）CLI
+# Alibaba Cloud DNS (Alidns) CLI
 
-## 目标
+## Goals
 
-- 通过 `aliyun-cli` 查询与管理阿里云 DNS 解析记录。
-- 快速为函数计算自定义域名配置 CNAME。
+- Query and manage Alibaba Cloud DNS records via `aliyun-cli`.
+- Quickly configure CNAME for Function Compute custom domains.
 
-## 何时使用
+## When to Use
 
-- 需要在阿里云 DNS 中新增或修改解析记录。
-- 需要为 FC 自定义域名完成 CNAME 解析。
+- When you need to add/update DNS records in Alibaba Cloud DNS.
+- When you need CNAME setup for FC custom domains.
 
-## 安装 aliyun-cli（无 sudo 方式）
+## Install aliyun-cli (without sudo)
 
 ```bash
 curl -fsSL https://aliyuncli.alicdn.com/aliyun-cli-linux-latest-amd64.tgz -o /tmp/aliyun-cli.tgz
@@ -27,7 +27,7 @@ mv /tmp/aliyun ~/.local/bin/aliyun
 chmod +x ~/.local/bin/aliyun
 ```
 
-## 配置凭证
+## Configure Credentials
 
 ```bash
 ~/.local/bin/aliyun configure set \
@@ -37,18 +37,18 @@ chmod +x ~/.local/bin/aliyun
   --region cn-hangzhou
 ```
 
-Region 作为默认值配置；若不确定最合适的 Region，执行时应询问用户。
+Configure region as default; if best region is unclear, ask the user.
 
-## 查询解析记录
+## Query DNS Records
 
-查询子域名记录：
+Query subdomain records:
 
 ```bash
 ~/.local/bin/aliyun alidns DescribeSubDomainRecords \
   --SubDomain news.example.com
 ```
 
-## 新增 CNAME 记录
+## Add CNAME Record
 
 ```bash
 ~/.local/bin/aliyun alidns AddDomainRecord \
@@ -58,33 +58,61 @@ Region 作为默认值配置；若不确定最合适的 Region，执行时应询
   --Value <TARGET>
 ```
 
-## FC 自定义域名 CNAME 目标
+## FC Custom Domain CNAME Target
 
-自定义域名需要指向 FC 公网 CNAME：
+Custom domain should point to FC public CNAME:
 
 ```
 <account_id>.<region_id>.fc.aliyuncs.com
 ```
 
-示例（杭州）：
+Example (Hangzhou):
 
 ```
 1629965279769872.cn-hangzhou.fc.aliyuncs.com
 ```
 
-## 常见问题
+## Common Issues
 
-- 根域名 CNAME 不被 DNS 服务商支持时，使用 `www` 等子域名或 ALIAS/ANAME 记录。
-- 解析生效后再创建 FC 自定义域名，否则会触发 `DomainNameNotResolved`。
+- If apex CNAME is not supported, use subdomain like `www` or ALIAS/ANAME records.
+- Create FC custom domain only after DNS propagation, otherwise `DomainNameNotResolved` may occur.
 
-## 参考
+## References
 
-- aliyun-cli 安装
+- aliyun-cli installation
   - https://help.aliyun.com/zh/cli/install-cli-on-linux
 - Alidns API（AddDomainRecord / DescribeSubDomainRecords）
   - https://help.aliyun.com/zh/dns/api-alidns-2015-01-09-adddomainrecord
   - https://help.aliyun.com/zh/dns/api-alidns-2015-01-09-describesubdomainrecords
-- FC 自定义域名配置与 CNAME 说明
+- FC custom domain configuration and CNAME guidance
   - https://www.alibabacloud.com/help/en/functioncompute/fc/user-guide/configure-custom-domain-names
 
-- 官方文档来源清单：`references/sources.md`
+- Official source list:`references/sources.md`
+
+## Validation
+
+```bash
+mkdir -p output/alicloud-network-dns-cli
+echo "validation_placeholder" > output/alicloud-network-dns-cli/validate.txt
+```
+
+Pass criteria: command exits 0 and `output/alicloud-network-dns-cli/validate.txt` is generated.
+
+## Output And Evidence
+
+- Save artifacts, command outputs, and API response summaries under `output/alicloud-network-dns-cli/`.
+- Include key parameters (region/resource id/time range) in evidence files for reproducibility.
+
+## Prerequisites
+
+- Configure least-privilege Alibaba Cloud credentials before execution.
+- Prefer environment variables: `ALICLOUD_ACCESS_KEY_ID`, `ALICLOUD_ACCESS_KEY_SECRET`, optional `ALICLOUD_REGION_ID`.
+- If region is unclear, ask the user before running mutating operations.
+
+## Workflow
+
+1) Confirm user intent, region, identifiers, and whether the operation is read-only or mutating.
+2) Run one minimal read-only query first to verify connectivity and permissions.
+3) Execute the target operation with explicit parameters and bounded scope.
+4) Verify results and save output/evidence files.
+

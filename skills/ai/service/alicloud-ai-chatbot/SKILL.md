@@ -1,6 +1,6 @@
 ---
 name: alicloud-ai-chatbot
-description: Manage Alibaba Cloud beebot (Chatbot) via OpenAPI/SDK. Use for listing resources, creating or updating configurations, querying status, and troubleshooting workflows for this product.
+description: Manage Alibaba Cloud beebot (Chatbot) via OpenAPI/SDK. Use whenever the user asks to configure, query, or troubleshoot Alibaba Cloud chatbot resources, including bot inventory, configuration changes, status checks, and API-level diagnostics.
 ---
 
 Category: service
@@ -54,6 +54,29 @@ The script writes API inventory artifacts under the skill output directory.
 
 If you need to save responses or generated artifacts, write them under:
 `output/alicloud-ai-chatbot/`
+
+## Validation
+
+```bash
+mkdir -p output/alicloud-ai-chatbot
+for f in skills/ai/service/alicloud-ai-chatbot/scripts/*.py; do
+  python3 -m py_compile "$f"
+done
+echo "py_compile_ok" > output/alicloud-ai-chatbot/validate.txt
+```
+
+Pass criteria: command exits 0 and `output/alicloud-ai-chatbot/validate.txt` is generated.
+
+## Output And Evidence
+
+- Save artifacts, command outputs, and API response summaries under `output/alicloud-ai-chatbot/`.
+- Include key parameters (region/resource id/time range) in evidence files for reproducibility.
+
+## Prerequisites
+
+- Configure least-privilege Alibaba Cloud credentials before execution.
+- Prefer environment variables: `ALICLOUD_ACCESS_KEY_ID`, `ALICLOUD_ACCESS_KEY_SECRET`, optional `ALICLOUD_REGION_ID`.
+- If region is unclear, ask the user before running mutating operations.
 
 ## References
 

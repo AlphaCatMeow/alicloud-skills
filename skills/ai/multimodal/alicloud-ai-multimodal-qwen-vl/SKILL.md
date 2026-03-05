@@ -75,7 +75,7 @@ Legacy names still seen in some workloads:
 
 ```bash
 python skills/ai/multimodal/alicloud-ai-multimodal-qwen-vl/scripts/analyze_image.py \
-  --request '{"prompt":"请概括这张图里的主要内容","image":"https://example.com/demo.jpg"}' \
+  --request '{"prompt":"Summarize the main content in this image","image":"https://example.com/demo.jpg"}' \
   --print-response
 ```
 
@@ -83,7 +83,7 @@ Using local image:
 
 ```bash
 python skills/ai/multimodal/alicloud-ai-multimodal-qwen-vl/scripts/analyze_image.py \
-  --request '{"prompt":"提取图片中的关键信息","image":"./samples/invoice.png","model":"qwen3-vl-plus"}' \
+  --request '{"prompt":"Extract key information from the image","image":"./samples/invoice.png","model":"qwen3-vl-plus"}' \
   --print-response
 ```
 
@@ -91,7 +91,7 @@ Structured extraction (JSON mode):
 
 ```bash
 python skills/ai/multimodal/alicloud-ai-multimodal-qwen-vl/scripts/analyze_image.py \
-  --request '{"prompt":"提取字段: title, amount, date","image":"./samples/invoice.png"}' \
+  --request '{"prompt":"Extract fields: title, amount, date","image":"./samples/invoice.png"}' \
   --json-mode \
   --print-response
 ```
@@ -100,7 +100,7 @@ Structured extraction (JSON Schema):
 
 ```bash
 python skills/ai/multimodal/alicloud-ai-multimodal-qwen-vl/scripts/analyze_image.py \
-  --request '{"prompt":"提取发票字段","image":"./samples/invoice.png"}' \
+  --request '{"prompt":"Extract invoice fields","image":"./samples/invoice.png"}' \
   --schema skills/ai/multimodal/alicloud-ai-multimodal-qwen-vl/references/examples/invoice.schema.json \
   --print-response
 ```
@@ -118,7 +118,7 @@ curl -sS https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions \
         "role":"user",
         "content":[
           {"type":"image_url","image_url":{"url":"https://example.com/demo.jpg"}},
-          {"type":"text","text":"请描述这张图并列出可执行动作"}
+          {"type":"text","text":"Describe this image and list executable actions"}
         ]
       }
     ],
@@ -154,6 +154,13 @@ python tests/ai/multimodal/alicloud-ai-multimodal-qwen-vl-test/scripts/smoke_tes
 - Compress very large images before upload to reduce latency and cost.
 - Add explicit extraction constraints in prompt (fields, JSON shape, language).
 - For OCR-like output, ask for confidence notes and unresolved text markers.
+
+## Workflow
+
+1) Confirm user intent, region, identifiers, and whether the operation is read-only or mutating.
+2) Run one minimal read-only query first to verify connectivity and permissions.
+3) Execute the target operation with explicit parameters and bounded scope.
+4) Verify results and save output/evidence files.
 
 ## References
 

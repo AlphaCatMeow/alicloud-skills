@@ -5,70 +5,91 @@ description: Run a minimal test matrix for the Model Studio skills that exist in
 
 Category: task
 
-# Model Studio 技能最小测试
+# Model Studio Skills Minimal Test
 
-对本仓库当前已存在的 Model Studio 技能进行最小化验证并记录结果。
+Run minimal validation for currently available Model Studio skills in this repo and record results.
 
 ## Prerequisites
 
-- 安装 SDK（建议在虚拟环境中，避免 PEP 668 限制）：
+- Install SDK (virtual environment recommended to avoid PEP 668 restrictions):
 
 ```bash
 python3 -m venv .venv
 . .venv/bin/activate
 python -m pip install dashscope
 ```
-- 配置 `DASHSCOPE_API_KEY`（环境变量优先；或在 `~/.alibabacloud/credentials` 里设置 `dashscope_api_key`）
+- Configure `DASHSCOPE_API_KEY` (environment variable preferred; or `dashscope_api_key` in `~/.alibabacloud/credentials`).
 
-## 测试矩阵（当前已支持）
+## Test Matrix (currently supported)
 
-1) 文生图 → `skills/ai/image/alicloud-ai-image-qwen-image/`
-2) 图像编辑 → `skills/ai/image/alicloud-ai-image-qwen-image-edit/`
-3) 文生视频/图生视频（i2v） → `skills/ai/video/alicloud-ai-video-wan-video/`
-4) 参考生视频（r2v） → `skills/ai/video/alicloud-ai-video-wan-r2v/`
-5) 语音合成 TTS → `skills/ai/audio/alicloud-ai-audio-tts/`
-6) 语音识别/转写 ASR（非实时） → `skills/ai/audio/alicloud-ai-audio-asr/`
-7) 实时语音合成 → `skills/ai/audio/alicloud-ai-audio-tts-realtime/`
-8) 音色复刻（Voice Clone） → `skills/ai/audio/alicloud-ai-audio-tts-voice-clone/`
-9) 音色设计（Voice Design） → `skills/ai/audio/alicloud-ai-audio-tts-voice-design/`
+1) Text-to-image → `skills/ai/image/alicloud-ai-image-qwen-image/`
+2) Image editing → `skills/ai/image/alicloud-ai-image-qwen-image-edit/`
+3) Text-to-video / Image-to-video (i2v) → `skills/ai/video/alicloud-ai-video-wan-video/`
+4) Reference-to-video (r2v) → `skills/ai/video/alicloud-ai-video-wan-r2v/`
+5) TTS → `skills/ai/audio/alicloud-ai-audio-tts/`
+6) ASR transcription (non-realtime) → `skills/ai/audio/alicloud-ai-audio-asr/`
+7) Realtime TTS → `skills/ai/audio/alicloud-ai-audio-tts-realtime/`
+8) Voice clone → `skills/ai/audio/alicloud-ai-audio-tts-voice-clone/`
+9) Voice design → `skills/ai/audio/alicloud-ai-audio-tts-voice-design/`
 
-若需新增能力测试，请先生成对应技能（可用 `skills/ai/misc/alicloud-ai-misc-crawl-and-skill/` 更新模型清单）。
+If new capability tests are needed, create corresponding skill first (use `skills/ai/misc/alicloud-ai-misc-crawl-and-skill/` to refresh model list).
 
-## 每项最小测试流程
+## Minimal Flow Per Capability
 
-1. 进入子技能目录并阅读 `SKILL.md`。
-2. 选 1 个最小输入示例与推荐模型。
-3. 执行 SDK 调用或脚本。
-4. 记录：模型名、请求摘要、返回摘要、耗时、状态。
+1. Open target sub-skill directory and read `SKILL.md`.
+2. Choose one minimal input example and recommended model.
+3. Run SDK call or script.
+4. Record model, request summary, response summary, duration, and status.
 
-## 结果记录模板
+## Result Template
 
-保存为 `output/alicloud-ai-entry-modelstudio-test-results.md`：
+Save as `output/alicloud-ai-entry-modelstudio-test-results.md`:
 
 ```
-# Model Studio 技能测试结果
+# Model Studio Skill Test Results
 
-- 日期：YYYY-MM-DD
-- 环境：region / API_BASE / auth 方式
+- Date: YYYY-MM-DD
+- Environment: region / API_BASE / auth method
 
-| 能力 | 子技能 | 模型 | 请求摘要 | 结果摘要 | 状态 | 备注 |
+| Capability | Sub-skill | Model | Request summary | Result summary | Status | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
-| 文生图 | alicloud-ai-image-qwen-image | <model-id> | ... | ... | pass/fail | ... |
-| 图像编辑 | alicloud-ai-image-qwen-image-edit | <model-id> | ... | ... | pass/fail | ... |
-| 图生视频（i2v） | alicloud-ai-video-wan-video | <model-id> | ... | ... | pass/fail | ... |
-| 参考生视频（r2v） | alicloud-ai-video-wan-r2v | <model-id> | ... | ... | pass/fail | ... |
-| 语音合成 | alicloud-ai-audio-tts | <model-id> | ... | ... | pass/fail | ... |
-| 语音识别（非实时） | alicloud-ai-audio-asr | <model-id> | ... | ... | pass/fail | ... |
-| 实时语音合成 | alicloud-ai-audio-tts-realtime | <model-id> | ... | ... | pass/fail | ... |
-| 音色复刻 | alicloud-ai-audio-tts-voice-clone | <model-id> | ... | ... | pass/fail | ... |
-| 音色设计 | alicloud-ai-audio-tts-voice-design | <model-id> | ... | ... | pass/fail | ... |
+| Text-to-image | alicloud-ai-image-qwen-image | <model-id> | ... | ... | pass/fail | ... |
+| Image editing | alicloud-ai-image-qwen-image-edit | <model-id> | ... | ... | pass/fail | ... |
+| Image-to-video (i2v) | alicloud-ai-video-wan-video | <model-id> | ... | ... | pass/fail | ... |
+| Reference-to-video (r2v) | alicloud-ai-video-wan-r2v | <model-id> | ... | ... | pass/fail | ... |
+| TTS | alicloud-ai-audio-tts | <model-id> | ... | ... | pass/fail | ... |
+| ASR (non-realtime) | alicloud-ai-audio-asr | <model-id> | ... | ... | pass/fail | ... |
+| Realtime TTS | alicloud-ai-audio-tts-realtime | <model-id> | ... | ... | pass/fail | ... |
+| Voice clone | alicloud-ai-audio-tts-voice-clone | <model-id> | ... | ... | pass/fail | ... |
+| Voice design | alicloud-ai-audio-tts-voice-design | <model-id> | ... | ... | pass/fail | ... |
 ```
 
-## 失败处理
+## Failure Handling
 
-- 参数不确定：回到子技能 `SKILL.md` 或 `references/*.md` 查官方参数。
-- 模型不可用：先更新模型清单再重试。
-- 认证问题：检查 `DASHSCOPE_API_KEY`（环境变量或 `~/.alibabacloud/credentials`）。
+- If parameters are unclear, check target sub-skill `SKILL.md` or `references/*.md`.
+- If model is unavailable, refresh model list and retry.
+- For auth issues, verify `DASHSCOPE_API_KEY` (env var or `~/.alibabacloud/credentials`).
+## Validation
+
+```bash
+mkdir -p output/alicloud-ai-entry-modelstudio-test
+echo "validation_placeholder" > output/alicloud-ai-entry-modelstudio-test/validate.txt
+```
+
+Pass criteria: command exits 0 and `output/alicloud-ai-entry-modelstudio-test/validate.txt` is generated.
+
+## Output And Evidence
+
+- Save artifacts, command outputs, and API response summaries under `output/alicloud-ai-entry-modelstudio-test/`.
+- Include key parameters (region/resource id/time range) in evidence files for reproducibility.
+
+## Workflow
+
+1) Confirm user intent, region, identifiers, and whether the operation is read-only or mutating.
+2) Run one minimal read-only query first to verify connectivity and permissions.
+3) Execute the target operation with explicit parameters and bounded scope.
+4) Verify results and save output/evidence files.
+
 ## References
 
 - Source list: `references/sources.md`

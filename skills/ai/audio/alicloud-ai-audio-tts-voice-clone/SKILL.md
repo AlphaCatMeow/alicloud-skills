@@ -51,7 +51,7 @@ Prepare a normalized request JSON and validate response schema:
 
 ```bash
 .venv/bin/python skills/ai/audio/alicloud-ai-audio-tts-voice-clone/scripts/prepare_voice_clone_request.py \
-  --text "欢迎来到语音复刻演示" \
+  --text "Welcome to this voice-clone demo" \
   --voice-sample "https://example.com/voice-sample.wav"
 ```
 
@@ -59,6 +59,30 @@ Prepare a normalized request JSON and validate response schema:
 
 - Default output: `output/ai-audio-tts-voice-clone/audio/`
 - Override base dir with `OUTPUT_DIR`.
+
+## Validation
+
+```bash
+mkdir -p output/alicloud-ai-audio-tts-voice-clone
+for f in skills/ai/audio/alicloud-ai-audio-tts-voice-clone/scripts/*.py; do
+  python3 -m py_compile "$f"
+done
+echo "py_compile_ok" > output/alicloud-ai-audio-tts-voice-clone/validate.txt
+```
+
+Pass criteria: command exits 0 and `output/alicloud-ai-audio-tts-voice-clone/validate.txt` is generated.
+
+## Output And Evidence
+
+- Save artifacts, command outputs, and API response summaries under `output/alicloud-ai-audio-tts-voice-clone/`.
+- Include key parameters (region/resource id/time range) in evidence files for reproducibility.
+
+## Workflow
+
+1) Confirm user intent, region, identifiers, and whether the operation is read-only or mutating.
+2) Run one minimal read-only query first to verify connectivity and permissions.
+3) Execute the target operation with explicit parameters and bounded scope.
+4) Verify results and save output/evidence files.
 
 ## References
 

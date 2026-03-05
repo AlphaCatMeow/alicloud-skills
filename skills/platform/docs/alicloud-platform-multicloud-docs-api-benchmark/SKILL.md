@@ -32,7 +32,7 @@ Use this skill when the user wants cross-cloud documentation/API comparison for 
 Run the benchmark script:
 
 ```bash
-python skills/platform/docs/alicloud-platform-multicloud-docs-api-benchmark/scripts/benchmark_multicloud_docs_api.py --product "<产品关键词>"
+python skills/platform/docs/alicloud-platform-multicloud-docs-api-benchmark/scripts/benchmark_multicloud_docs_api.py --product "<product keyword>"
 ```
 
 Example:
@@ -41,18 +41,18 @@ Example:
 python skills/platform/docs/alicloud-platform-multicloud-docs-api-benchmark/scripts/benchmark_multicloud_docs_api.py --product "serverless"
 ```
 
-LLM 平台横评示例（百炼/Bedrock/Azure OpenAI/Vertex AI/混元/方舟/盘古）：
+LLM platform benchmark example (Bailian/Bedrock/Azure OpenAI/Vertex AI/Hunyuan/Ark/Pangu):
 
 ```bash
-python skills/platform/docs/alicloud-platform-multicloud-docs-api-benchmark/scripts/benchmark_multicloud_docs_api.py --product "百炼" --preset "llm-platform"
+python skills/platform/docs/alicloud-platform-multicloud-docs-api-benchmark/scripts/benchmark_multicloud_docs_api.py --product "Bailian" --preset "llm-platform"
 ```
 
-如不传 `--preset`，脚本会根据关键词自动尝试匹配预设。
+If `--preset` is omitted, script attempts to auto-match preset based on keyword.
 
-评分权重可通过 profile 切换（见 `references/scoring.json`）：
+Scoring weights can be switched by profile (see `references/scoring.json`):
 
 ```bash
-python skills/platform/docs/alicloud-platform-multicloud-docs-api-benchmark/scripts/benchmark_multicloud_docs_api.py --product "百炼" --preset "llm-platform" --scoring-profile "llm-platform"
+python skills/platform/docs/alicloud-platform-multicloud-docs-api-benchmark/scripts/benchmark_multicloud_docs_api.py --product "Bailian" --preset "llm-platform" --scoring-profile "llm-platform"
 ```
 
 ## Optional: pin authoritative links
@@ -96,6 +96,29 @@ When answering the user:
 1) Show score ranking across all providers.
 2) Highlight top gaps (P0/P1/P2) and concrete fix actions.
 3) If discovery confidence is low, ask user to provide pinned links and rerun.
+
+## Validation
+
+```bash
+mkdir -p output/alicloud-platform-multicloud-docs-api-benchmark
+for f in skills/platform/docs/alicloud-platform-multicloud-docs-api-benchmark/scripts/*.py; do
+  python3 -m py_compile "$f"
+done
+echo "py_compile_ok" > output/alicloud-platform-multicloud-docs-api-benchmark/validate.txt
+```
+
+Pass criteria: command exits 0 and `output/alicloud-platform-multicloud-docs-api-benchmark/validate.txt` is generated.
+
+## Output And Evidence
+
+- Save artifacts, command outputs, and API response summaries under `output/alicloud-platform-multicloud-docs-api-benchmark/`.
+- Include key parameters (region/resource id/time range) in evidence files for reproducibility.
+
+## Prerequisites
+
+- Configure least-privilege Alibaba Cloud credentials before execution.
+- Prefer environment variables: `ALICLOUD_ACCESS_KEY_ID`, `ALICLOUD_ACCESS_KEY_SECRET`, optional `ALICLOUD_REGION_ID`.
+- If region is unclear, ask the user before running mutating operations.
 
 ## References
 

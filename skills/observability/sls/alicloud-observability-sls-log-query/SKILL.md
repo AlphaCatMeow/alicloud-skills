@@ -5,33 +5,33 @@ description: Query and troubleshoot logs in Alibaba Cloud Log Service (SLS) usin
 
 Category: service
 
-# SLS 日志查询与排障
+# SLS Log Query and Troubleshooting
 
-使用 SLS 的 query|analysis 语法与 Python SDK 做日志检索、过滤与统计分析。
+Use SLS query|analysis syntax and Python SDK for log search, filtering, and analytics.
 
 ## Prerequisites
 
-- 安装 SDK（建议在虚拟环境中，避免 PEP 668 限制）：
+- Install SDK (virtual environment recommended to avoid PEP 668 restrictions):
 
 ```bash
 python3 -m venv .venv
 . .venv/bin/activate
 python -m pip install -U aliyun-log-python-sdk
 ```
-- 配置环境变量：
+- Configure environment variables:
   - `ALIBABA_CLOUD_ACCESS_KEY_ID`
   - `ALIBABA_CLOUD_ACCESS_KEY_SECRET`
-  - `SLS_ENDPOINT` (如 `cn-hangzhou.log.aliyuncs.com`)
+  - `SLS_ENDPOINT` (e.g. `cn-hangzhou.log.aliyuncs.com`)
   - `SLS_PROJECT`
-  - `SLS_LOGSTORE`（支持单个值，或逗号分隔多个值）
+  - `SLS_LOGSTORE`(supports a single value or comma-separated values)
 
-## Query 组成
+## Query Composition
 
-- 查询语句：用于过滤日志（如 `status:500`）。
-- 分析语句：用于统计聚合，格式为 `查询语句|分析语句`。
-- 示例：`* | SELECT status, count(*) AS pv GROUP BY status`
+- Query clause: filters logs (e.g. `status:500`).
+- Analysis clause: statistical aggregation, format `query|analysis`.
+- Example: `* | SELECT status, count(*) AS pv GROUP BY status`
 
-详细语法见 `references/query-syntax.md`。
+See `references/query-syntax.md` for full syntax.
 
 ## Quickstart (Python SDK)
 
@@ -67,7 +67,7 @@ python skills/observability/sls/alicloud-observability-sls-log-query/scripts/que
   --last-minutes 15
 ```
 
-Optional args: `--project`, `--logstore`（可重复，或逗号分隔多个值）, `--endpoint`, `--start`, `--end`, `--last-minutes`, `--limit`, `--parallel`.
+Optional args: `--project`, `--logstore`(repeatable, or comma-separated values), `--endpoint`, `--start`, `--end`, `--last-minutes`, `--limit`, `--parallel`.
 
 ## Troubleshooting script
 
@@ -78,19 +78,36 @@ python skills/observability/sls/alicloud-observability-sls-log-query/scripts/tro
   --limit 20
 ```
 
-Optional args: `--error-query`, `--group-field`, `--limit`, `--logstore`（可重复，或逗号分隔多个值）, `--parallel`, plus the time range args above.
+Optional args: `--error-query`, `--group-field`, `--limit`, `--logstore`(repeatable, or comma-separated values), `--parallel`, plus the time range args above.
 
 ## Workflow
 
-1) 确认 Logstore 已开启索引（未开启会导致查询/分析失败）。
-2) 编写查询语句，必要时追加分析语句。
-3) 通过 SDK 或脚本执行查询并查看结果。
-4) 用 `limit` 控制返回行数，必要时缩小时间范围。
+1) Ensure Logstore indexing is enabled (queries/analysis fail without index).
+2) Write query clause and append analysis clause when needed.
+3) Execute with SDK/script and inspect results.
+4) Control returned rows with `limit`; narrow time range when needed.
+
+## Validation
+
+```bash
+mkdir -p output/alicloud-observability-sls-log-query
+for f in skills/observability/sls/alicloud-observability-sls-log-query/scripts/*.py; do
+  python3 -m py_compile "$f"
+done
+echo "py_compile_ok" > output/alicloud-observability-sls-log-query/validate.txt
+```
+
+Pass criteria: command exits 0 and `output/alicloud-observability-sls-log-query/validate.txt` is generated.
+
+## Output And Evidence
+
+- Save artifacts, command outputs, and API response summaries under `output/alicloud-observability-sls-log-query/`.
+- Include key parameters (region/resource id/time range) in evidence files for reproducibility.
 
 ## References
 
-- 语法与示例：`references/query-syntax.md`
-- Python SDK 初始化与查询：`references/python-sdk.md`
-- 排障模板：`references/templates.md`
+- Syntax and examples:`references/query-syntax.md`
+- Python SDK initialization and queries:`references/python-sdk.md`
+- Troubleshooting templates:`references/templates.md`
 
 - Source list: `references/sources.md`

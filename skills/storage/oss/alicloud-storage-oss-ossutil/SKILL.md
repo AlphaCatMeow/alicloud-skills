@@ -5,7 +5,7 @@ description: Alibaba Cloud OSS CLI (ossutil 2.0) skill. Install, configure, and 
 
 Category: tool
 
-# OSS（ossutil 2.0）命令行技能
+# OSS (ossutil 2.0) CLI Skill
 
 ## Validation
 
@@ -17,75 +17,75 @@ Pass criteria: command exits 0 and `output/alicloud-storage-oss-ossutil/validate
 
 ## Output And Evidence
 
-- 将命令输出、对象清单、同步日志保存到 `output/alicloud-storage-oss-ossutil/`。
-- 至少保留一次上传或列举结果作为证据。
+- Save command outputs, object listings, and sync logs under `output/alicloud-storage-oss-ossutil/`.
+- Keep at least one upload or listing result as evidence.
 
-## 目标
+## Goals
 
-- 使用 ossutil 2.0 管理 OSS：上传、下载、同步与资源管理。
-- 统一安装、配置、凭证与 Region/Endpoint 的 CLI 流程。
+- Use ossutil 2.0 to manage OSS: upload, download, sync, and resource management.
+- Provide a unified CLI flow for install, config, credentials, and region/endpoint handling.
 
-## 快速接入流程
+## Quick Start Flow
 
-1. 安装 ossutil 2.0。
-2. 配置 AK/SK 与默认 Region（`ossutil config` 或配置文件）。
-3. 先 `ossutil ls` 列 bucket，再按 bucket 所在 region 列 object。
-4. 执行上传/下载/同步或 API 级命令。
+1. Install ossutil 2.0.
+2. Configure AK/SK and default region (`ossutil config` or config file).
+3. Run `ossutil ls` to list buckets, then list objects using the bucket region.
+4. Execute upload/download/sync or API-level commands.
 
-## 安装 ossutil 2.0
+## Install ossutil 2.0
 
-- 按平台安装步骤见 `references/install.md`。
+- See `references/install.md` for platform-specific install steps.
 
-## 配置 ossutil
+## Configure ossutil
 
-- 交互式配置：
+- Interactive configuration:
 
 ```bash
 ossutil config
 ```
 
-- 默认配置文件路径：
+- Default config file paths:
   - Linux/macOS：`~/.ossutilconfig`
   - Windows：`C:\Users\issuser\.ossutilconfig`
 
-配置项主要包括：
+Main configuration fields include:
 - `AccessKey ID`
 - `AccessKey Secret`
-- `Region`（示例默认 `cn-hangzhou`；未确定最合理 Region 时需询问）
-- `Endpoint`（可选；未指定时按 Region 自动推导）
+- `Region`（example default `cn-hangzhou`; ask the user if the best region is unclear）
+- `Endpoint`（optional; auto-derived from region if omitted）
 
-## AccessKey 配置提示
+## AccessKey configuration notes
 
-建议使用 RAM 用户/角色并遵循最小权限原则，避免在命令行中明文传入 AK。
+Use RAM users/roles with least privilege and avoid passing AK in plain text on command line.
 
-推荐方式（环境变量）：
+Recommended method (environment variables):
 
 ```bash
-export ALICLOUD_ACCESS_KEY_ID="你的AK"
-export ALICLOUD_ACCESS_KEY_SECRET="你的SK"
+export ALICLOUD_ACCESS_KEY_ID="<your-ak>"
+export ALICLOUD_ACCESS_KEY_SECRET="<your-sk>"
 export ALICLOUD_REGION_ID="cn-beijing"
 ```
 
-`ALICLOUD_REGION_ID` 可作为默认 Region；未设置时可选择最合理 Region，无法判断则询问用户。
+`ALICLOUD_REGION_ID` can be used as default region; if unset choose the most reasonable region, ask user if unclear.
 
-或使用标准共享凭证文件：
+Or use the standard shared credentials file:
 
 `~/.alibabacloud/credentials`
 
 ```ini
 [default]
 type = access_key
-access_key_id = 你的AK
-access_key_secret = 你的SK
+access_key_id = <your-ak>
+access_key_secret = <your-sk>
 ```
 
 
-## 命令结构（2.0）
+## Command structure (2.0)
 
-- 高级命令示例：`ossutil config`
-- API 级命令示例：`ossutil api put-bucket-acl`
+- High-level command example:`ossutil config`
+- API-level command example:`ossutil api put-bucket-acl`
 
-## 常用命令示例
+## Common command examples
 
 ```bash
 ossutil ls
@@ -95,17 +95,17 @@ ossutil cp oss://your-bucket/path/remote.txt ./remote.txt
 ossutil sync ./local-dir oss://your-bucket/path/ --delete
 ```
 
-## 推荐执行流程（先列 bucket，再列对象）
+## Recommended execution flow (list buckets first, then objects)
 
-1) 列出所有 bucket
+1) List all buckets
 
 ```bash
 ossutil ls
 ```
 
-2) 从输出中拿到目标 bucket 的 region（例如 `oss-cn-shanghai`），转换成 `--region` 所需格式（`cn-shanghai`）
+2) Get target bucket region from output (e.g. `oss-cn-shanghai`) and convert it to `--region` format (`cn-shanghai`).
 
-3) 列对象时显式指定 `--region` 与 `-e`（避免跨地域签名/endpoint 错误）
+3) When listing objects, explicitly set `--region` and `-e` to avoid cross-region signature/endpoint errors.
 
 ```bash
 ossutil ls oss://your-bucket \
@@ -114,43 +114,57 @@ ossutil ls oss://your-bucket \
   -e https://oss-cn-shanghai.aliyuncs.com
 ```
 
-4) 对超大 bucket，优先限制输出规模
+4) For very large buckets, limit output size first.
 
 ```bash
 ossutil ls oss://your-bucket --limited-num 100
 ossutil ls oss://your-bucket/some-prefix/ -r --short-format --region cn-shanghai -e https://oss-cn-shanghai.aliyuncs.com
 ```
 
-## 常见报错与处理
+## Common errors and handling
 
 - `Error: region must be set in sign version 4.`
-  - 原因：缺少 region 配置。
-  - 处理：在配置文件补充 `region`，或命令行加 `--region cn-xxx`。
+  - Cause: missing region configuration.
+  - Fix: add `region` in config file, or pass `--region cn-xxx`.
 
 - `The bucket you are attempting to access must be addressed using the specified endpoint`
-  - 原因：请求 endpoint 与 bucket 实际地域不一致。
-  - 处理：改用 bucket 所在地域 endpoint，如 `-e https://oss-cn-hongkong.aliyuncs.com`。
+  - Cause: request endpoint does not match bucket region.
+  - Fix: use endpoint of the bucket region, e.g. `-e https://oss-cn-hongkong.aliyuncs.com`.
 
 - `Invalid signing region in Authorization header`
-  - 原因：签名 region 与 bucket 地域不一致。
-  - 处理：同时修正 `--region` 与 `-e`，两者必须与 bucket 所在地域一致。
+  - Cause: signature region does not match bucket region.
+  - Fix: correct both `--region` and `-e`; both must match bucket region.
 
-## 凭证与安全建议
+## Credential and security guidance
 
-- 优先使用 RAM 用户的 AK 进行访问控制。
-- 命令行选项可覆盖配置文件，但直接在命令行传入密钥存在泄露风险。
-- 生产环境建议使用配置文件或环境变量方式管理密钥。
+- Prefer RAM user AK for access control.
+- CLI options can override config file, but passing secrets on command line has leakage risk.
+- In production, manage secrets via config files or environment variables.
 
-## 选择问题（不确定时提问）
+## Clarifying questions (ask when uncertain)
 
-1. 你的操作对象是 Bucket 还是 Object？
-2. 需要上传/下载/同步，还是权限/生命周期/跨域等管理操作？
-3. 目标 Region 与 Endpoint 是什么？
-4. 是否在同地域 ECS 上访问 OSS（可考虑内网 Endpoint）？
+1. Is your target a Bucket or an Object?
+2. Do you need upload/download/sync, or management actions like ACL/lifecycle/CORS?
+3. What are the target region and endpoint?
+4. Are you accessing OSS from ECS in the same region (intranet endpoint may be preferred)?
 
-## 参考
+## References
 
-- OSSUTIL 2.0 概述与安装/配置：
+- OSSUTIL 2.0 overview and install/config:
   - https://help.aliyun.com/zh/oss/developer-reference/ossutil-overview
 
-- 官方文档来源清单：`references/sources.md`
+- Official source list:`references/sources.md`
+
+## Prerequisites
+
+- Configure least-privilege Alibaba Cloud credentials before execution.
+- Prefer environment variables: `ALICLOUD_ACCESS_KEY_ID`, `ALICLOUD_ACCESS_KEY_SECRET`, optional `ALICLOUD_REGION_ID`.
+- If region is unclear, ask the user before running mutating operations.
+
+## Workflow
+
+1) Confirm user intent, region, identifiers, and whether the operation is read-only or mutating.
+2) Run one minimal read-only query first to verify connectivity and permissions.
+3) Execute the target operation with explicit parameters and bounded scope.
+4) Verify results and save output/evidence files.
+

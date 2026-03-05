@@ -5,27 +5,27 @@ description: Minimal validation for crawl-and-skill workflow readiness.
 
 Category: test
 
-# 最小可用测试
+# Minimal Viable Test
 
-## 目标
+## Goals
 
-- 仅验证该技能的最小请求链路可用。
-- 失败时记录错误信息，不猜参数。
+- Validate only the minimal request path for this skill.
+- If execution fails, record exact error details without guessing parameters.
 
-## 前置条件
+## Prerequisites
 
-- 按技能说明准备认证信息与 Region。
-- 参考技能目录：skills/ai/misc/alicloud-ai-misc-crawl-and-skill
+- Prepare authentication and region settings based on the skill instructions.
+- Target skill: skills/ai/misc/alicloud-ai-misc-crawl-and-skill
 
-## 测试步骤（最小）
+## Test Steps (Minimal)
 
-1) 打开对应技能的 SKILL.md，选择一个最小输入示例。
-2) 发起请求或运行示例脚本。
-3) 记录：请求摘要 / 返回摘要 / 成功或失败原因。
+1) Open the target skill SKILL.md and choose one minimal input example.
+2) Send one minimal request or run the example script.
+3) Record request summary, response summary, and success/failure reason.
 
-## 结果记录模板
+## Result Template
 
-- 时间：YYYY-MM-DD
-- 技能：skills/ai/misc/alicloud-ai-misc-crawl-and-skill
-- 结论：pass / fail
-- 备注：
+- Date: YYYY-MM-DD
+- Skill: skills/ai/misc/alicloud-ai-misc-crawl-and-skill
+- Conclusion: pass / fail
+- Notes:

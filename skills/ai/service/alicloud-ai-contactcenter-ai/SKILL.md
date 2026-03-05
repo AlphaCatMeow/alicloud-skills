@@ -1,6 +1,6 @@
 ---
 name: alicloud-ai-contactcenter-ai
-description: Manage Alibaba Cloud Contact Center AI (ContactCenterAI) via OpenAPI/SDK. Use for listing resources, creating or updating configurations, querying status, and troubleshooting workflows for this product.
+description: Manage Alibaba Cloud Contact Center AI (ContactCenterAI) via OpenAPI/SDK. Use whenever the task involves Contact Center AI resource lifecycle operations, configuration changes, status queries, or troubleshooting failed ContactCenterAI API calls.
 ---
 
 Category: service
@@ -54,6 +54,29 @@ The script writes API inventory artifacts under the skill output directory.
 
 If you need to save responses or generated artifacts, write them under:
 `output/alicloud-ai-contactcenter-ai/`
+
+## Validation
+
+```bash
+mkdir -p output/alicloud-ai-contactcenter-ai
+for f in skills/ai/service/alicloud-ai-contactcenter-ai/scripts/*.py; do
+  python3 -m py_compile "$f"
+done
+echo "py_compile_ok" > output/alicloud-ai-contactcenter-ai/validate.txt
+```
+
+Pass criteria: command exits 0 and `output/alicloud-ai-contactcenter-ai/validate.txt` is generated.
+
+## Output And Evidence
+
+- Save artifacts, command outputs, and API response summaries under `output/alicloud-ai-contactcenter-ai/`.
+- Include key parameters (region/resource id/time range) in evidence files for reproducibility.
+
+## Prerequisites
+
+- Configure least-privilege Alibaba Cloud credentials before execution.
+- Prefer environment variables: `ALICLOUD_ACCESS_KEY_ID`, `ALICLOUD_ACCESS_KEY_SECRET`, optional `ALICLOUD_REGION_ID`.
+- If region is unclear, ask the user before running mutating operations.
 
 ## References
 

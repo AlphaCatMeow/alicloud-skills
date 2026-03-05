@@ -5,19 +5,19 @@ description: Minimal OSSUTIL 2.0 smoke tests. Validate config, list bucket, and 
 
 Category: test
 
-# OSSUTIL 2.0 最小可用测试
+# OSSUTIL 2.0 Minimal Viable Test
 
-## 目标
+## Goals
 
 - 验证 AK/Region 配置正确。
 - 验证 OSS 访问（列桶、上传、下载）。
 
-## 前置条件
+## Prerequisites
 
 - 已配置 AK（推荐环境变量或 `~/.alibabacloud/credentials`）。
 - 已准备一个可读写的 OSS Bucket。
 
-## 测试步骤（最小）
+## Test Steps (Minimal)
 
 1) 查看配置
 
@@ -52,7 +52,7 @@ ossutil cp oss://<bucket>/tests/ossutil-test.txt /tmp/ossutil-test-down.txt --re
 cat /tmp/ossutil-test-down.txt
 ```
 
-## 期望结果
+## Expected Results
 
 - `ossutil ls` 能返回至少一个 bucket 或无权限说明。
 - 指定 `--region` + `-e` 后，列对象可正常返回。

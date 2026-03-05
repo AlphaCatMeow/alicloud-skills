@@ -36,6 +36,7 @@
 - JavaScript examples use CommonJS in this repo (see `skills/**/scripts/*.js`).
 - Skill folders use kebab-case, prefixed by product scope (example: `alicloud-ai-image-qwen-image`).
 - Keep frontmatter in every `SKILL.md` with at least `name` and `description`.
+- Language policy: keep `skills/**/SKILL.md` content in English only. If multilingual support is needed, place localized content in `README.zh-CN.md` / `README.zh-TW.md` instead of skill source files.
 
 ## Testing Guidelines
 - This repository uses smoke-test skills instead of a single `pytest` suite.

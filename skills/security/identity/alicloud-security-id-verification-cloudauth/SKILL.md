@@ -1,6 +1,6 @@
 ---
 name: alicloud-security-id-verification-cloudauth
-description: Manage Alibaba Cloud ID Verification (Cloudauth) via OpenAPI/SDK. Use for listing resources, creating or updating configurations, querying status, and troubleshooting workflows for this product.
+description: Manage Alibaba Cloud ID Verification (Cloudauth) via OpenAPI/SDK. Use whenever the user is working on identity-verification resource operations, config updates, status checks, or troubleshooting Cloudauth API workflows.
 ---
 
 Category: service
@@ -54,6 +54,29 @@ The script writes API inventory artifacts under the skill output directory.
 
 If you need to save responses or generated artifacts, write them under:
 `output/alicloud-security-id-verification-cloudauth/`
+
+## Validation
+
+```bash
+mkdir -p output/alicloud-security-id-verification-cloudauth
+for f in skills/security/identity/alicloud-security-id-verification-cloudauth/scripts/*.py; do
+  python3 -m py_compile "$f"
+done
+echo "py_compile_ok" > output/alicloud-security-id-verification-cloudauth/validate.txt
+```
+
+Pass criteria: command exits 0 and `output/alicloud-security-id-verification-cloudauth/validate.txt` is generated.
+
+## Output And Evidence
+
+- Save artifacts, command outputs, and API response summaries under `output/alicloud-security-id-verification-cloudauth/`.
+- Include key parameters (region/resource id/time range) in evidence files for reproducibility.
+
+## Prerequisites
+
+- Configure least-privilege Alibaba Cloud credentials before execution.
+- Prefer environment variables: `ALICLOUD_ACCESS_KEY_ID`, `ALICLOUD_ACCESS_KEY_SECRET`, optional `ALICLOUD_REGION_ID`.
+- If region is unclear, ask the user before running mutating operations.
 
 ## References
 

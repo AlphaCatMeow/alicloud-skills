@@ -5,25 +5,25 @@ description: Manage Alibaba Cloud Simple Application Server (SWAS OpenAPI 2020-0
 
 Category: service
 
-# 轻量应用服务器（SWAS-OPEN 2020-06-01）
+# Simple Application Server (SWAS-OPEN 2020-06-01)
 
-使用 SWAS-OPEN OpenAPI 管控轻量应用服务器的全量资源：实例、磁盘、快照、镜像、密钥对、防火墙、命令助手、监控、标签、轻量数据库等。
+Use SWAS-OPEN OpenAPI to manage full SAS resources: instances, disks, snapshots, images, key pairs, firewall, Cloud Assistant, monitoring, tags, and lightweight databases.
 
-## 前置要求
+## Prerequisites
 
-- 准备 AccessKey（建议 RAM 用户/角色最小权限）。
-- 选择正确 Region 并使用对应接入点（公网/VPC）。`ALICLOUD_REGION_ID` 可作为默认 Region；未设置时可选择最合理 Region，无法判断则询问用户。
-- 该产品 OpenAPI 为 RPC 签名风格，优先使用 Python SDK 或 OpenAPI Explorer，避免手写签名。
+- Prepare AccessKey with least-privilege RAM user/role.
+- Choose correct region and matching endpoint (public/VPC).`ALICLOUD_REGION_ID` can be used as default region; if unset choose the most reasonable region, ask user if unclear.
+- This OpenAPI uses RPC signing; prefer Python SDK or OpenAPI Explorer instead of manual signing.
 
-## SDK 优先级
+## SDK Priority
 
-1) Python SDK（优先）
+1) Python SDK (preferred)
 2) OpenAPI Explorer
-3) 其他 SDK
+3) Other SDKs
 
-### Python SDK 快速查询（实例 ID / IP / 规格）
+### Python SDK quick query (instance ID / IP / plan)
 
-推荐使用虚拟环境（避免 PEP 668 的系统安装限制）。
+Virtual environment is recommended (avoid PEP 668 system install restrictions).
 
 ```bash
 python3 -m venv .venv
@@ -75,57 +75,87 @@ if __name__ == "__main__":
     main()
 ```
 
-### Python SDK scripts（推荐用于清单与统计）
+### Python SDK scripts (recommended for inventory and summary)
 
-- 全地域实例清单（TSV/JSON）：`scripts/list_instances_all_regions.py`
-- 按套餐统计实例数：`scripts/summary_instances_by_plan.py`
-- 按状态统计实例数：`scripts/summary_instances_by_status.py`
-- 修复 SSH 免密（支持自定义端口）：`scripts/fix_ssh_access.py`
-- 获取实例当前 SSH 端口：`scripts/get_ssh_port.py`
+- All-region instance inventory (TSV/JSON):`scripts/list_instances_all_regions.py`
+- Count instances by plan:`scripts/summary_instances_by_plan.py`
+- Count instances by status:`scripts/summary_instances_by_status.py`
+- Fix SSH key-based access (custom port supported):`scripts/fix_ssh_access.py`
+- Get current SSH port of an instance:`scripts/get_ssh_port.py`
 
-## CLI 注意事项
+## CLI Notes
 
-- `aliyun` CLI 可能没有 `swas-open` 作为产品名；优先使用 Python SDK。
-  如必须用 CLI，请先通过 OpenAPI Explorer 生成调用示例，再迁移到 CLI。
+- `aliyun` CLI may not expose `swas-open` as product name; prefer Python SDK.
+  If CLI is mandatory, generate request examples in OpenAPI Explorer first, then migrate to CLI.
 
-## 工作流
+## Workflow
 
-1) 明确资源类型与 Region（实例/磁盘/快照/镜像/防火墙/命令/数据库/标签）。  
-2) 在 `references/api_overview.md` 中确定 API 组与具体接口。  
-3) 选择调用方式（Python SDK / OpenAPI Explorer / 其他 SDK）。  
-4) 执行变更后，用查询接口校验状态或结果。  
+1) Confirm resource type and region (instance/disk/snapshot/image/firewall/command/database/tag).  
+2) Identify API group and operation in `references/api_overview.md`.  
+3) Choose invocation method (Python SDK / OpenAPI Explorer / other SDK).  
+4) After mutations, verify state/results with query APIs.  
 
-## 常见操作映射
+## Common Operation Map
 
-- 实例查询/启动/停止/重启：`ListInstances`、`StartInstance(s)`、`StopInstance(s)`、`RebootInstance(s)`  
-- 执行命令：`RunCommand` 或 `CreateCommand` + `InvokeCommand`，结果用 `DescribeInvocations`/`DescribeInvocationResult`  
-- 防火墙：`ListFirewallRules`/`CreateFirewallRule(s)`/`ModifyFirewallRule`/`EnableFirewallRule`/`DisableFirewallRule`  
-- 快照/磁盘/镜像：`CreateSnapshot`、`ResetDisk`、`CreateCustomImage` 等  
+- Instance query/start/stop/reboot:`ListInstances`、`StartInstance(s)`、`StopInstance(s)`、`RebootInstance(s)`  
+- Command execution:`RunCommand` or `CreateCommand` + `InvokeCommand`; use `DescribeInvocations`/`DescribeInvocationResult`  
+- Firewall:`ListFirewallRules`/`CreateFirewallRule(s)`/`ModifyFirewallRule`/`EnableFirewallRule`/`DisableFirewallRule`  
+- Snapshot/disk/image:`CreateSnapshot`、`ResetDisk`、`CreateCustomImage` etc.  
 
-## 命令助手执行提示
+## Cloud Assistant Execution Notes
 
-- 目标实例必须为运行中（Running）。
-- 需要安装云助手 Agent（可通过 `InstallCloudAssistant` 安装）。
-- PowerShell 命令需确保 Windows 实例已配置 PowerShell 模块。
-- 执行后用 `DescribeInvocations` 或 `DescribeInvocationResult` 取回结果与状态。
+- Target instance must be in Running state.
+- Cloud Assistant agent must be installed (use `InstallCloudAssistant`).
+- For PowerShell commands, ensure required modules are available on Windows instances.
+- After execution, use `DescribeInvocations` or `DescribeInvocationResult` to fetch status and outputs.
 
-详见 `references/command-assistant.md`。
+See `references/command-assistant.md` for details.
 
-## 选择问题（不确定时提问）
+## Clarifying questions (ask when uncertain)
 
-1. 目标 Region 是什么？是否需要 VPC 接入点？
-2. 目标实例 ID 列表是什么？实例当前状态是否为 Running？
-3. 要执行的命令内容/脚本类型/超时时间？Linux 还是 Windows？
-4. 是否需要批量操作或定时执行？
+1. What is the target region? Is VPC endpoint required?
+2. What are target instance IDs? Are they currently Running?
+3. What command/script type/timeout is needed? Linux or Windows?
+4. Do you need batch execution or scheduled execution?
 
 ## Output Policy
 
-若需保存结果或响应，写入：
+If you need to save results or responses, write to:
 `output/compute-swas-open/`
+
+## Validation
+
+```bash
+mkdir -p output/alicloud-compute-swas-open
+for f in skills/compute/swas/alicloud-compute-swas-open/scripts/*.py; do
+  python3 -m py_compile "$f"
+done
+echo "py_compile_ok" > output/alicloud-compute-swas-open/validate.txt
+```
+
+Pass criteria: command exits 0 and `output/alicloud-compute-swas-open/validate.txt` is generated.
+
+## Output And Evidence
+
+- Save artifacts, command outputs, and API response summaries under `output/alicloud-compute-swas-open/`.
+- Include key parameters (region/resource id/time range) in evidence files for reproducibility.
+
+## Prerequisites
+
+- Configure least-privilege Alibaba Cloud credentials before execution.
+- Prefer environment variables: `ALICLOUD_ACCESS_KEY_ID`, `ALICLOUD_ACCESS_KEY_SECRET`, optional `ALICLOUD_REGION_ID`.
+- If region is unclear, ask the user before running mutating operations.
+
+## Workflow
+
+1) Confirm user intent, region, identifiers, and whether the operation is read-only or mutating.
+2) Run one minimal read-only query first to verify connectivity and permissions.
+3) Execute the target operation with explicit parameters and bounded scope.
+4) Verify results and save output/evidence files.
 
 ## References
 
-- API 总览与接口分组：`references/api_overview.md`
-- 接入点与集成方式：`references/endpoints.md`
-- 命令助手要点：`references/command-assistant.md`
-- 官方文档来源清单：`references/sources.md`
+- API overview and operation groups:`references/api_overview.md`
+- Endpoints and integration:`references/endpoints.md`
+- Cloud Assistant highlights:`references/command-assistant.md`
+- Official source list:`references/sources.md`

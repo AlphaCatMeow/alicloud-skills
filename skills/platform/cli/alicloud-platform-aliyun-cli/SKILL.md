@@ -5,7 +5,7 @@ description: Alibaba Cloud generic CLI skill for installing, configuring, and us
 
 Category: tool
 
-# 阿里云通用 CLI（aliyun）技能
+# Alibaba Cloud Generic CLI (aliyun) Skill
 
 ## Validation
 
@@ -18,44 +18,44 @@ Pass criteria: command exits 0 and `output/alicloud-platform-aliyun-cli/validate
 
 ## Output And Evidence
 
-- 将 CLI 版本检查、API 调用输出与报错日志写入 `output/alicloud-platform-aliyun-cli/`。
-- 每次变更操作保留请求参数和结果摘要。
+- Save CLI version checks, API outputs, and error logs under `output/alicloud-platform-aliyun-cli/`.
+- For each mutating action, keep request parameters and result summaries.
 
-## 目标
+## Goals
 
-- 使用官方 `aliyun` CLI 执行阿里云 OpenAPI 操作。
-- 提供安装、配置、API 发现、执行与排错的标准流程。
+- Use official `aliyun` CLI to execute Alibaba Cloud OpenAPI operations.
+- Provide a standard flow for install, configuration, API discovery, execution, and troubleshooting.
 
-## 快速流程
+## Quick Flow
 
-1. 先执行版本保障脚本（先检查，再决定是否更新）。
-2. 若未安装或到检查周期，脚本自动下载官方最新包安装。
-3. 配置凭证与默认 Region（建议 `default` profile）。
-4. 用 `aliyun <product> --help` / `aliyun <product> <ApiName> --help` 确认参数。
-5. 先执行只读查询，再执行变更操作。
+1. Run the version guard script first (check first, then decide whether to upgrade).
+2. If not installed or check interval reached, the script downloads and installs the latest official package.
+3. Configure credentials and default region (recommend `default` profile).
+4. Use `aliyun <product> --help` / `aliyun <product> <ApiName> --help` to confirm parameters.
+5. Run read-only queries first, then mutating operations.
 
-## 版本保障（实用方案）
+## Version Guard (Practical)
 
-优先使用本技能自带脚本，避免“每次都下载”的时间浪费：
+Prefer the bundled script to avoid unnecessary downloads on every run:
 
 ```bash
 python skills/platform/cli/alicloud-platform-aliyun-cli/scripts/ensure_aliyun_cli.py
 ```
 
-默认行为：
+Default behavior:
 
-- 检查周期：24 小时（可通过环境变量修改）。
-- 周期内且版本满足要求：跳过下载。
-- 超过周期/未安装/低于最低版本：自动下载官方最新安装包并覆盖安装。
+- Check interval: 24 hours (configurable via environment variable).
+- Within interval and version is sufficient: skip download.
+- Exceeded interval / not installed / below minimum version: auto-download and install latest official package.
 
-可选控制项（环境变量）：
+Optional controls (environment variables):
 
-- `ALIYUN_CLI_CHECK_INTERVAL_HOURS=24`：检查周期。
-- `ALIYUN_CLI_FORCE_UPDATE=1`：强制更新（忽略周期）。
-- `ALIYUN_CLI_MIN_VERSION=3.2.9`：最低版本门槛。
-- `ALIYUN_CLI_INSTALL_DIR=~/.local/bin`：安装目录。
+- `ALIYUN_CLI_CHECK_INTERVAL_HOURS=24`：check interval.
+- `ALIYUN_CLI_FORCE_UPDATE=1`：force update (ignore interval).
+- `ALIYUN_CLI_MIN_VERSION=3.2.9`：minimum acceptable version.
+- `ALIYUN_CLI_INSTALL_DIR=~/.local/bin`：installation directory.
 
-手动参数示例：
+Manual parameter examples:
 
 ```bash
 python skills/platform/cli/alicloud-platform-aliyun-cli/scripts/ensure_aliyun_cli.py \
@@ -63,7 +63,7 @@ python skills/platform/cli/alicloud-platform-aliyun-cli/scripts/ensure_aliyun_cl
   --min-version 3.2.9
 ```
 
-## 安装（Linux 示例）
+## Install (Linux example)
 
 ```bash
 curl -fsSL https://aliyuncli.alicdn.com/aliyun-cli-linux-latest-amd64.tgz -o /tmp/aliyun-cli.tgz
@@ -74,7 +74,7 @@ chmod +x ~/.local/bin/aliyun
 ~/.local/bin/aliyun version
 ```
 
-## 配置凭证
+## Configure Credentials
 
 ```bash
 aliyun configure set \
@@ -85,18 +85,18 @@ aliyun configure set \
   --region cn-hangzhou
 ```
 
-查看已配置 profile：
+View configured profiles:
 
 ```bash
 aliyun configure list
 ```
 
-## 命令结构
+## Command structure
 
-- 通用形式：`aliyun <product> <ApiName> --Param1 value1 --Param2 value2`
-- REST 形式：`aliyun <product> [GET|POST|PUT|DELETE] <PathPattern> --body '...json...'`
+- Generic form:`aliyun <product> <ApiName> --Param1 value1 --Param2 value2`
+- REST form:`aliyun <product> [GET|POST|PUT|DELETE] <PathPattern> --body '...json...'`
 
-## API 发现与参数确认
+## API Discovery and Parameter Validation
 
 ```bash
 aliyun help
@@ -104,32 +104,46 @@ aliyun ecs --help
 aliyun ecs DescribeRegions --help
 ```
 
-## 常用只读示例
+## Common Read-Only Examples
 
 ```bash
-# ECS：列地域
+# ECS: list regions
 aliyun ecs DescribeRegions
 
-# ECS：列实例（按地域）
+# ECS: list instances by region
 aliyun ecs DescribeInstances --RegionId cn-hangzhou
 
-# SLS：列 Project（按 endpoint）
+# SLS: list projects by endpoint
 aliyun sls ListProject --endpoint cn-hangzhou.log.aliyuncs.com --size 100
 ```
 
-## 常见问题
+## Common Issues
 
-- `InvalidAccessKeyId.NotFound` / `SignatureDoesNotMatch`：检查 AK/SK 与 profile。
-- `MissingRegionId`：补充 `--region` 或在 profile 中配置默认 Region。
-- 调用 SLS 报 endpoint 错误：显式传 `--endpoint <region>.log.aliyuncs.com`。
+- `InvalidAccessKeyId.NotFound` / `SignatureDoesNotMatch`：check AK/SK and profile.
+- `MissingRegionId`：add `--region` or configure default region in profile.
+- for SLS endpoint errors, explicitly pass `--endpoint <region>.log.aliyuncs.com`.
 
-## 执行建议
+## Execution Recommendations
 
-- 所有任务开始前先运行 `ensure_aliyun_cli.py`。
-- 未明确资源范围时，先查询再变更。
-- 涉及删除/覆盖类操作前，先输出将要变更的资源清单。
-- 批量操作优先先小范围验证一条。
+- Run `ensure_aliyun_cli.py` before starting tasks.
+- If resource scope is unclear, query first then mutate.
+- Before delete/overwrite operations, output the target resource list first.
+- For batch operations, validate one item in a small scope first.
 
-## 参考
+## References
 
-- 官方文档来源清单：`references/sources.md`
+- Official source list:`references/sources.md`
+
+## Prerequisites
+
+- Configure least-privilege Alibaba Cloud credentials before execution.
+- Prefer environment variables: `ALICLOUD_ACCESS_KEY_ID`, `ALICLOUD_ACCESS_KEY_SECRET`, optional `ALICLOUD_REGION_ID`.
+- If region is unclear, ask the user before running mutating operations.
+
+## Workflow
+
+1) Confirm user intent, region, identifiers, and whether the operation is read-only or mutating.
+2) Run one minimal read-only query first to verify connectivity and permissions.
+3) Execute the target operation with explicit parameters and bounded scope.
+4) Verify results and save output/evidence files.
+

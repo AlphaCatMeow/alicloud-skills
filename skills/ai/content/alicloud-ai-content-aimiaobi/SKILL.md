@@ -1,6 +1,6 @@
 ---
 name: alicloud-ai-content-aimiaobi
-description: Manage Alibaba Cloud Quan Miao (AiMiaoBi) via OpenAPI/SDK. Use for listing resources, creating or updating configurations, querying status, and troubleshooting workflows for this product.
+description: Manage Alibaba Cloud Quan Miao (AiMiaoBi) via OpenAPI/SDK. Use whenever the user asks for Alibaba Cloud MiaoBi content operations, including listing resources, creating/updating configurations, querying runtime status, and diagnosing API or workflow failures.
 ---
 
 Category: service
@@ -54,6 +54,29 @@ The script writes API inventory artifacts under the skill output directory.
 
 If you need to save responses or generated artifacts, write them under:
 `output/alicloud-ai-content-aimiaobi/`
+
+## Validation
+
+```bash
+mkdir -p output/alicloud-ai-content-aimiaobi
+for f in skills/ai/content/alicloud-ai-content-aimiaobi/scripts/*.py; do
+  python3 -m py_compile "$f"
+done
+echo "py_compile_ok" > output/alicloud-ai-content-aimiaobi/validate.txt
+```
+
+Pass criteria: command exits 0 and `output/alicloud-ai-content-aimiaobi/validate.txt` is generated.
+
+## Output And Evidence
+
+- Save artifacts, command outputs, and API response summaries under `output/alicloud-ai-content-aimiaobi/`.
+- Include key parameters (region/resource id/time range) in evidence files for reproducibility.
+
+## Prerequisites
+
+- Configure least-privilege Alibaba Cloud credentials before execution.
+- Prefer environment variables: `ALICLOUD_ACCESS_KEY_ID`, `ALICLOUD_ACCESS_KEY_SECRET`, optional `ALICLOUD_REGION_ID`.
+- If region is unclear, ask the user before running mutating operations.
 
 ## References
 

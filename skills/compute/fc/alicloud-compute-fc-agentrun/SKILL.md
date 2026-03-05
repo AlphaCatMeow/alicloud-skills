@@ -84,6 +84,23 @@ See `references/sdk.md` for SDK acquisition guidance.
 If you store any generated files or responses, write them under:
 `output/compute-fc-agentrun/`.
 
+## Validation
+
+```bash
+mkdir -p output/alicloud-compute-fc-agentrun
+for f in skills/compute/fc/alicloud-compute-fc-agentrun/scripts/*.py; do
+  python3 -m py_compile "$f"
+done
+echo "py_compile_ok" > output/alicloud-compute-fc-agentrun/validate.txt
+```
+
+Pass criteria: command exits 0 and `output/alicloud-compute-fc-agentrun/validate.txt` is generated.
+
+## Output And Evidence
+
+- Save artifacts, command outputs, and API response summaries under `output/alicloud-compute-fc-agentrun/`.
+- Include key parameters (region/resource id/time range) in evidence files for reproducibility.
+
 ## References
 
 - API overview and operation list: `references/api_overview.md`

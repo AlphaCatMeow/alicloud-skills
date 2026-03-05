@@ -79,6 +79,13 @@ Prepare a normalized request JSON and validate response schema:
 - Default output: `output/alicloud-ai-image-qwen-image-edit/images/`
 - Override base dir with `OUTPUT_DIR`.
 
+## Workflow
+
+1) Confirm user intent, region, identifiers, and whether the operation is read-only or mutating.
+2) Run one minimal read-only query first to verify connectivity and permissions.
+3) Execute the target operation with explicit parameters and bounded scope.
+4) Verify results and save output/evidence files.
+
 ## References
 
 - `references/sources.md`

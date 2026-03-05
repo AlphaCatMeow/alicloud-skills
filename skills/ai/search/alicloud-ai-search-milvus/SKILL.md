@@ -88,6 +88,30 @@ Optional args: `--collection`, `--dimension`, `--limit`, `--filter`.
 - Dimension mismatch: ensure all vectors match collection dimension.
 - Network errors: verify VPC/public access settings on the instance.
 
+## Validation
+
+```bash
+mkdir -p output/alicloud-ai-search-milvus
+for f in skills/ai/search/alicloud-ai-search-milvus/scripts/*.py; do
+  python3 -m py_compile "$f"
+done
+echo "py_compile_ok" > output/alicloud-ai-search-milvus/validate.txt
+```
+
+Pass criteria: command exits 0 and `output/alicloud-ai-search-milvus/validate.txt` is generated.
+
+## Output And Evidence
+
+- Save artifacts, command outputs, and API response summaries under `output/alicloud-ai-search-milvus/`.
+- Include key parameters (region/resource id/time range) in evidence files for reproducibility.
+
+## Workflow
+
+1) Confirm user intent, region, identifiers, and whether the operation is read-only or mutating.
+2) Run one minimal read-only query first to verify connectivity and permissions.
+3) Execute the target operation with explicit parameters and bounded scope.
+4) Verify results and save output/evidence files.
+
 ## References
 
 - PyMilvus `MilvusClient` examples for AliCloud Milvus

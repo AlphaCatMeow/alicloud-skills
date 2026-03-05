@@ -7,9 +7,16 @@
 Quick links: [Quick Start](#quick-start) | [Skill Index](#skill-index)
 
 Cloud Mind: fold world-class cloud infrastructure into your AI chat box.
+AI云：把世界级云基础设施带进你的 AI 对话框。
 
 A curated collection of **Alibaba Cloud core AI Agent skills** covering key product lines,
 including Model Studio, OSS, ECS, and more.
+
+## 内容更新机制（OpenClaw）
+
+本项目将由 **OpenClaw** 启动并持续执行以下内容机制：
+- **每日自动更新**：持续刷新技能与文档内容，保持时效性。
+- **人工审阅把关**：每次更新均进行人工复核，确保准确性、清晰度与可用性。
 
 ## Quick Start
 
@@ -305,17 +312,22 @@ Standards and migration notes:
 | database/rds | alicloud-database-rds-supabase | Manage Alibaba Cloud RDS Supabase (RDS AI Service 2025-05-07) via OpenAPI. Use for creating, starting/stopping/restarting instances, resetting passwords, querying endpoints/auth/storage, configuring auth/RAG/SSL/IP whitelist, and listing instance details or conversations. | `skills/database/rds/alicloud-database-rds-supabase` |
 | media/ice | alicloud-media-ice | 技能 `alicloud-media-ice` 的能力说明，详见对应 SKILL.md。 | `skills/media/ice/alicloud-media-ice` |
 | media/live | alicloud-media-live | 技能 `alicloud-media-live` 的能力说明，详见对应 SKILL.md。 | `skills/media/live/alicloud-media-live` |
+| media/mps | alicloud-media-mps | 技能 `alicloud-media-mps` 的能力说明，详见对应 SKILL.md。 | `skills/media/mps/alicloud-media-mps` |
 | media/video | alicloud-media-video-translation | Create and manage Alibaba Cloud IMS video translation jobs via OpenAPI (subtitle/voice/face). Use when you need API-based video translation, status polling, and job management. | `skills/media/video/alicloud-media-video-translation` |
 | media/vod | alicloud-media-vod | 技能 `alicloud-media-vod` 的能力说明，详见对应 SKILL.md。 | `skills/media/vod/alicloud-media-vod` |
+| network/cdn | alicloud-network-cdn | Manage Alibaba Cloud CDN via OpenAPI/SDK. Use for domain onboarding/lifecycle, cache refresh & preload, HTTPS certificate updates, and log/monitoring queries. | `skills/network/cdn/alicloud-network-cdn` |
 | network/dns | alicloud-network-dns-cli | Alibaba Cloud DNS (Alidns) CLI skill. Use to query, add, and update DNS records via aliyun-cli, including CNAME setup for Function Compute custom domains. | `skills/network/dns/alicloud-network-dns-cli` |
 | network/esa | alicloud-network-esa | 技能 `alicloud-network-esa` 的能力说明，详见对应 SKILL.md。 | `skills/network/esa/alicloud-network-esa` |
 | network/slb | alicloud-network-alb | Manage and troubleshoot Alibaba Cloud ALB. Full lifecycle management for instances, listeners, server groups, forwarding rules, certificates, ACLs, security policies, health checks, and async job polling. Includes 28 CLI scripts covering CRUD, start/stop, deletion protection, and more. | `skills/network/slb/alicloud-network-alb` |
+| observability/pts | alicloud-observability-pts | 技能 `alicloud-observability-pts` 的能力说明，详见对应 SKILL.md。 | `skills/observability/pts/alicloud-observability-pts` |
 | observability/sls | alicloud-observability-sls-log-query | Query and troubleshoot logs in Alibaba Cloud Log Service (SLS) using query|analysis syntax and the Python SDK. Use for time-bounded log search, error investigation, and root-cause analysis workflows. | `skills/observability/sls/alicloud-observability-sls-log-query` |
 | platform/cli | alicloud-platform-aliyun-cli | Generic Alibaba Cloud CLI (aliyun) workflows for install, credential/profile setup, API discovery, and cross-product OpenAPI operations. Use when tasks need command-line resource query or management on Alibaba Cloud. | `skills/platform/cli/alicloud-platform-aliyun-cli` |
+| platform/devops | alicloud-platform-devops | 技能 `alicloud-platform-devops` 的能力说明，详见对应 SKILL.md。 | `skills/platform/devops/alicloud-platform-devops` |
 | platform/docs | alicloud-platform-docs-api-review | Automatically review latest Alibaba Cloud product docs and OpenAPI docs by product name, then output detailed prioritized improvement suggestions with evidence and scoring. Use when user asks to audit product documentation quality, API documentation quality, or wants actionable doc/API optimization recommendations. | `skills/platform/docs/alicloud-platform-docs-api-review` |
 | platform/docs | alicloud-platform-multicloud-docs-api-benchmark | Benchmark similar product documentation and API documentation across Alibaba Cloud, AWS, Azure, GCP, Tencent Cloud, Volcano Engine, and Huawei Cloud. Given one product keyword, auto-discover latest official docs/API links, score quality consistently, and output detailed prioritized improvement recommendations. | `skills/platform/docs/alicloud-platform-multicloud-docs-api-benchmark` |
 | platform/openapi | alicloud-platform-openapi-product-api-discovery | Discover and reconcile Alibaba Cloud product catalogs from Ticket System, Support & Service, and BSS OpenAPI; fetch OpenAPI product/version/API metadata; and summarize API coverage to plan new skills. Use when you need a complete product list, product-to-API mapping, or coverage/gap reports for skill generation. | `skills/platform/openapi/alicloud-platform-openapi-product-api-discovery` |
 | platform/openclaw | alicloud-platform-openclaw-setup | 技能 `alicloud-platform-openclaw-setup` 的能力说明，详见对应 SKILL.md。 | `skills/platform/openclaw/alicloud-platform-openclaw-setup` |
+| platform/skills | alicloud-skill-creator | 技能 `alicloud-skill-creator` 的能力说明，详见对应 SKILL.md。 | `skills/platform/skills/alicloud-skill-creator` |
 | security/content | alicloud-security-content-moderation-green | Manage Alibaba Cloud Content Moderation (Green) via OpenAPI/SDK. Use for listing resources, creating or updating configurations, querying status, and troubleshooting workflows for this product. | `skills/security/content/alicloud-security-content-moderation-green` |
 | security/firewall | alicloud-security-cloudfw | Manage Alibaba Cloud Cloud Firewall (Cloudfw) via OpenAPI/SDK. Use for listing resources, creating or updating configurations, querying status, and troubleshooting workflows for this product. | `skills/security/firewall/alicloud-security-cloudfw` |
 | security/host | alicloud-security-center-sas | Manage Alibaba Cloud Security Center (Sas) via OpenAPI/SDK. Use for listing resources, creating or updating configurations, querying status, and troubleshooting workflows for this product. | `skills/security/host/alicloud-security-center-sas` |

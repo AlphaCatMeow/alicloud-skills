@@ -83,3 +83,4 @@ Write all generated files and execution evidence under:
 ## References
 
 - Source list: `references/sources.md`
+- Task templates: `references/templates.md`

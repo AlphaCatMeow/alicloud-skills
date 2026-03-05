@@ -112,6 +112,30 @@ Optional args: `--collection`, `--dimension`, `--topk`, `--filter`.
 - 400: invalid collection schema or dimension mismatch
 - 429/5xx: retry with exponential backoff
 
+## Validation
+
+```bash
+mkdir -p output/alicloud-ai-search-dashvector
+for f in skills/ai/search/alicloud-ai-search-dashvector/scripts/*.py; do
+  python3 -m py_compile "$f"
+done
+echo "py_compile_ok" > output/alicloud-ai-search-dashvector/validate.txt
+```
+
+Pass criteria: command exits 0 and `output/alicloud-ai-search-dashvector/validate.txt` is generated.
+
+## Output And Evidence
+
+- Save artifacts, command outputs, and API response summaries under `output/alicloud-ai-search-dashvector/`.
+- Include key parameters (region/resource id/time range) in evidence files for reproducibility.
+
+## Workflow
+
+1) Confirm user intent, region, identifiers, and whether the operation is read-only or mutating.
+2) Run one minimal read-only query first to verify connectivity and permissions.
+3) Execute the target operation with explicit parameters and bounded scope.
+4) Verify results and save output/evidence files.
+
 ## References
 
 - DashVector Python SDK: `Client.create`, `Collection.upsert`, `Collection.query`

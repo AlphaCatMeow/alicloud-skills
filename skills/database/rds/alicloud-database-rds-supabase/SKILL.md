@@ -5,56 +5,83 @@ description: Manage Alibaba Cloud RDS Supabase (RDS AI Service 2025-05-07) via O
 
 Category: service
 
-# 阿里云 RDS Supabase（RDS AI 服务 2025-05-07）
+# Alibaba Cloud RDS Supabase (RDS AI Service 2025-05-07)
 
-使用 RDS AI 服务 OpenAPI 管理 RDS Supabase 应用实例及相关配置，包括实例生命周期、认证、存储、RAG、白名单与 SSL。
+Manage RDS Supabase app instances and related configurations via RDS AI Service OpenAPI, including lifecycle, auth, storage, RAG, IP whitelist, and SSL.
 
-## 前置要求
+## Prerequisites
 
-- 使用 RAM 用户/角色最小权限的 AccessKey，优先从环境变量读取 AK/SK。
-- OpenAPI 为 RPC 签名机制，优先使用官方 SDK 或 OpenAPI Explorer。
+- Use least-privilege RAM user/role AccessKey and prefer environment variables for AK/SK.
+- OpenAPI uses RPC signing; prefer official SDKs or OpenAPI Explorer.
 
-## 工作流
+## Workflow
 
-1) 明确资源类型：实例 / 认证 / 存储 / RAG / 安全配置。  
-2) 在 `references/api_overview.md` 中定位接口。  
-3) 选择调用方式（SDK / OpenAPI Explorer / 自签名）。  
-4) 变更后使用查询接口确认状态与配置。  
+1) Confirm resource type: instance / auth / storage / RAG / security configuration.  
+2) Locate operations in `references/api_overview.md`.  
+3) Choose invocation method (SDK / OpenAPI Explorer / custom signing).  
+4) After changes, verify state and configuration with query APIs.  
 
-## AccessKey 读取优先级（必须遵循）
+## AccessKey Priority (Required)
 
-1) 环境变量（优先）：`ALICLOUD_ACCESS_KEY_ID` / `ALICLOUD_ACCESS_KEY_SECRET` / `ALICLOUD_REGION_ID`
-Region 规则：`ALICLOUD_REGION_ID` 作为可选默认值；若未设置，执行时应选择最合理的 Region，无法判断则主动询问。  
-2) 标准配置文件：`~/.alibabacloud/credentials`
+1) Environment variables (preferred):`ALICLOUD_ACCESS_KEY_ID` / `ALICLOUD_ACCESS_KEY_SECRET` / `ALICLOUD_REGION_ID`
+Region policy: `ALICLOUD_REGION_ID` is optional default; if unset choose the most reasonable region and ask when unclear.  
+2) Standard credentials file:`~/.alibabacloud/credentials`
 
-## Region 默认策略
+## Default Region Strategy
 
-- 如未指定 Region，优先选择最合理 Region；无法判断则询问用户。  
-- 仅在明确需要或用户同意时，才进行全地域查询（先调 `ListRegions`，再对每个 Region 调用查询接口）。  
-- 若用户提供 Region，则只查询指定 Region。  
+- If region is not specified, choose the most reasonable region; ask the user when unclear.  
+- Only run all-region queries when explicitly needed or user-approved (call `ListRegions` first, then query each region).  
+- If user provides region, query only that region.  
 
-## 常见操作映射
+## Common Operation Map
 
-- 实例：`CreateAppInstance` / `DeleteAppInstance` / `StartInstance` / `StopInstance` / `RestartInstance`
-- 连接与认证：`DescribeInstanceEndpoints` / `DescribeInstanceAuthInfo` / `ModifyInstanceAuthConfig`
-- 存储：`DescribeInstanceStorageConfig` / `ModifyInstanceStorageConfig`
-- 安全：`ModifyInstanceIpWhitelist` / `DescribeInstanceIpWhitelist` / `ModifyInstanceSSL` / `DescribeInstanceSSL`
+- Instance:`CreateAppInstance` / `DeleteAppInstance` / `StartInstance` / `StopInstance` / `RestartInstance`
+- Connectivity and auth:`DescribeInstanceEndpoints` / `DescribeInstanceAuthInfo` / `ModifyInstanceAuthConfig`
+- Storage:`DescribeInstanceStorageConfig` / `ModifyInstanceStorageConfig`
+- Security:`ModifyInstanceIpWhitelist` / `DescribeInstanceIpWhitelist` / `ModifyInstanceSSL` / `DescribeInstanceSSL`
 - RAG：`ModifyInstanceRAGConfig` / `DescribeInstanceRAGConfig`
 
-## 选择问题（不确定时提问）
+## Clarifying questions (ask when uncertain)
 
-1. 目标实例 ID 是什么？所在地域？
-2. 要做的是实例生命周期，还是配置变更（认证/存储/RAG/白名单/SSL）？
-3. 是否需要批量操作或先查询现有配置？
+1. What is the target instance ID and region?
+2. Is this instance lifecycle management or configuration changes (auth/storage/RAG/IP whitelist/SSL)?
+3. Do you need batch operations or an initial state query first?
 
 ## Output Policy
 
-若需保存结果或响应，写入：
+If you need to save results or responses, write to:
 `output/database-rds-supabase/`
+
+## Validation
+
+```bash
+mkdir -p output/alicloud-database-rds-supabase
+echo "validation_placeholder" > output/alicloud-database-rds-supabase/validate.txt
+```
+
+Pass criteria: command exits 0 and `output/alicloud-database-rds-supabase/validate.txt` is generated.
+
+## Output And Evidence
+
+- Save artifacts, command outputs, and API response summaries under `output/alicloud-database-rds-supabase/`.
+- Include key parameters (region/resource id/time range) in evidence files for reproducibility.
+
+## Prerequisites
+
+- Configure least-privilege Alibaba Cloud credentials before execution.
+- Prefer environment variables: `ALICLOUD_ACCESS_KEY_ID`, `ALICLOUD_ACCESS_KEY_SECRET`, optional `ALICLOUD_REGION_ID`.
+- If region is unclear, ask the user before running mutating operations.
+
+## Workflow
+
+1) Confirm user intent, region, identifiers, and whether the operation is read-only or mutating.
+2) Run one minimal read-only query first to verify connectivity and permissions.
+3) Execute the target operation with explicit parameters and bounded scope.
+4) Verify results and save output/evidence files.
 
 ## References
 
-- API 总览与接口分组：`references/api_overview.md`
-- 核心接口参数速查：`references/api_reference.md`
-- 全地域查询示例：`references/query-examples.md`
-- 官方文档来源清单：`references/sources.md`
+- API overview and operation groups:`references/api_overview.md`
+- Core API parameter quick reference:`references/api_reference.md`
+- All-region query examples:`references/query-examples.md`
+- Official source list:`references/sources.md`

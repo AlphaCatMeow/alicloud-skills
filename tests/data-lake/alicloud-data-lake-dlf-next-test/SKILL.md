@@ -5,19 +5,19 @@ description: Minimal smoke test for DlfNext skill. Validate metadata discovery a
 
 Category: test
 
-# DlfNext 最小可用测试
+# DlfNext Minimal Viable Test
 
-## 前置条件
+## Prerequisites
 
-- 已配置 AK/SK 与 region。
-- 目标技能：`skills/data-lake/alicloud-data-lake-dlf-next/`。
+- AK/SK and region are configured.
+- GoalsSkill: `skills/data-lake/alicloud-data-lake-dlf-next/`。
 
-## 测试步骤
+## Test Steps
 
-1) 执行 `python scripts/list_openapi_meta_apis.py`。
-2) 选取一个只读 API 执行最小请求。
-3) 保存结果到 `output/alicloud-data-lake-dlf-next-test/`。
+1) Run `python scripts/list_openapi_meta_apis.py`.
+2) Select one read-only API and run a minimal request.
+3) Save outputs under `output/alicloud-data-lake-dlf-next-test/`。
 
-## 期望结果
+## Expected Results
 
-- 元数据与只读查询链路均可用。
+- Metadata and read-only query paths are available.

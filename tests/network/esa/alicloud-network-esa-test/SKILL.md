@@ -5,14 +5,14 @@ description: Minimal smoke test for Alibaba Cloud ESA skill. Validate OpenAPI me
 
 Category: test
 
-# ESA 最小可用测试
+# ESA Minimal Viable Test
 
-## 前置条件
+## Prerequisites
 
-- 已具备网络访问能力。
-- 目标技能：`skills/network/esa/alicloud-network-esa/`。
+- Network access is available.
+- GoalsSkill: `skills/network/esa/alicloud-network-esa/`。
 
-## 测试步骤
+## Test Steps
 
 1) 执行：
 
@@ -27,7 +27,7 @@ python skills/network/esa/alicloud-network-esa/scripts/list_openapi_meta_apis.py
 - `output/alicloud-network-esa-test/ESA_2024-09-10_api_docs.json`
 - `output/alicloud-network-esa-test/ESA_2024-09-10_api_list.md`
 
-## 期望结果
+## Expected Results
 
-- 命令执行成功。
-- API 列表文件包含多条 API 名称（非空）。
+- Command execution succeeds.
+- API list output file contains multiple API names (non-empty).

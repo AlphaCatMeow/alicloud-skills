@@ -1,6 +1,6 @@
 ---
 name: alicloud-ai-content-aicontent
-description: Manage Alibaba Cloud AIContent (AiContent) via OpenAPI/SDK. Use for listing resources, creating or updating configurations, querying status, and troubleshooting workflows for this product.
+description: Manage Alibaba Cloud AIContent (AiContent) via OpenAPI/SDK. Use whenever the user needs AI content generation or content workflow operations in Alibaba Cloud, including listing assets, creating/updating generation configurations, checking task status, or troubleshooting failed content jobs.
 ---
 
 Category: service
@@ -54,6 +54,29 @@ The script writes API inventory artifacts under the skill output directory.
 
 If you need to save responses or generated artifacts, write them under:
 `output/alicloud-ai-content-aicontent/`
+
+## Validation
+
+```bash
+mkdir -p output/alicloud-ai-content-aicontent
+for f in skills/ai/content/alicloud-ai-content-aicontent/scripts/*.py; do
+  python3 -m py_compile "$f"
+done
+echo "py_compile_ok" > output/alicloud-ai-content-aicontent/validate.txt
+```
+
+Pass criteria: command exits 0 and `output/alicloud-ai-content-aicontent/validate.txt` is generated.
+
+## Output And Evidence
+
+- Save artifacts, command outputs, and API response summaries under `output/alicloud-ai-content-aicontent/`.
+- Include key parameters (region/resource id/time range) in evidence files for reproducibility.
+
+## Prerequisites
+
+- Configure least-privilege Alibaba Cloud credentials before execution.
+- Prefer environment variables: `ALICLOUD_ACCESS_KEY_ID`, `ALICLOUD_ACCESS_KEY_SECRET`, optional `ALICLOUD_REGION_ID`.
+- If region is unclear, ask the user before running mutating operations.
 
 ## References
 

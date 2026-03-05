@@ -51,13 +51,37 @@ Prepare a normalized request JSON and validate response schema:
 ```bash
 .venv/bin/python skills/ai/audio/alicloud-ai-audio-tts-voice-design/scripts/prepare_voice_design_request.py \
   --voice-prompt "A warm female host voice, clear articulation, medium pace" \
-  --text "这是音色设计演示"
+  --text "This is a voice-design demo"
 ```
 
 ## Output location
 
 - Default output: `output/ai-audio-tts-voice-design/audio/`
 - Override base dir with `OUTPUT_DIR`.
+
+## Validation
+
+```bash
+mkdir -p output/alicloud-ai-audio-tts-voice-design
+for f in skills/ai/audio/alicloud-ai-audio-tts-voice-design/scripts/*.py; do
+  python3 -m py_compile "$f"
+done
+echo "py_compile_ok" > output/alicloud-ai-audio-tts-voice-design/validate.txt
+```
+
+Pass criteria: command exits 0 and `output/alicloud-ai-audio-tts-voice-design/validate.txt` is generated.
+
+## Output And Evidence
+
+- Save artifacts, command outputs, and API response summaries under `output/alicloud-ai-audio-tts-voice-design/`.
+- Include key parameters (region/resource id/time range) in evidence files for reproducibility.
+
+## Workflow
+
+1) Confirm user intent, region, identifiers, and whether the operation is read-only or mutating.
+2) Run one minimal read-only query first to verify connectivity and permissions.
+3) Execute the target operation with explicit parameters and bounded scope.
+4) Verify results and save output/evidence files.
 
 ## References
 
