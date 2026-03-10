@@ -1,6 +1,7 @@
 ---
 name: alicloud-ai-audio-tts-realtime-test
 description: Minimal realtime TTS smoke test for Model Studio Qwen TTS Realtime.
+version: 1.0.0
 ---
 
 Category: test

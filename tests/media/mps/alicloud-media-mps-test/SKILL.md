@@ -1,6 +1,7 @@
 ---
 name: alicloud-media-mps-test
 description: Smoke test for alicloud-media-mps. Validate minimal authentication, API reachability, and one read-only query path.
+version: 1.0.0
 ---
 
 Category: test

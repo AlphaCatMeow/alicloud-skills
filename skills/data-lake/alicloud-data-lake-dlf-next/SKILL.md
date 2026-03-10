@@ -1,6 +1,7 @@
 ---
 name: alicloud-data-lake-dlf-next
 description: Manage Alibaba Cloud Data Lake Formation (DlfNext) via OpenAPI/SDK. Use whenever the user needs DLF Next catalog/governance resource operations, including listing resources, create/update flows, status checks, and troubleshooting metadata workflow issues.
+version: 1.0.0
 ---
 
 Category: service

@@ -1,6 +1,7 @@
 ---
 name: alicloud-ai-image-qwen-image
 description: Generate images with Model Studio DashScope SDK using Qwen Image generation models (qwen-image, qwen-image-plus, qwen-image-max and snapshots). Use when implementing or documenting image.generate requests/responses, mapping prompt/negative_prompt/size/seed/reference_image, or integrating image generation into the video-agent pipeline.
+version: 1.0.0
 ---
 
 Category: provider

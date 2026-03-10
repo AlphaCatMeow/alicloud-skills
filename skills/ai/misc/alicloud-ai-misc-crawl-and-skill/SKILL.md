@@ -1,6 +1,7 @@
 ---
 name: alicloud-ai-misc-crawl-and-skill
 description: Refresh the Model Studio models crawl and regenerate derived summaries and `skills/ai/**` skills. Use when the models list or generated skills must be updated.
+version: 1.0.0
 ---
 
 Category: task

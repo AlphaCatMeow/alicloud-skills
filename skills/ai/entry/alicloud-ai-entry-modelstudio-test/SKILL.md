@@ -1,6 +1,7 @@
 ---
 name: alicloud-ai-entry-modelstudio-test
 description: Run a minimal test matrix for the Model Studio skills that exist in this repo (image/video/TTS/ASR and newly added edit/realtime/voice variants). Use to execute one small request per skill and record results.
+version: 1.0.0
 ---
 
 Category: task

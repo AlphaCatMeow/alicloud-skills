@@ -1,6 +1,7 @@
 ---
 name: alicloud-security-content-moderation-green
 description: Manage Alibaba Cloud Content Moderation (Green) via OpenAPI/SDK. Use whenever the user needs content moderation resource and policy operations, including list/create/update actions, status inspection, and troubleshooting moderation workflow failures.
+version: 1.0.0
 ---
 
 Category: service

@@ -1,6 +1,7 @@
 ---
 name: alicloud-ai-search-dashvector
 description: Build vector retrieval with DashVector using the Python SDK. Use when creating collections, upserting docs, and running similarity search with filters in Claude Code/Codex.
+version: 1.0.0
 ---
 
 Category: provider

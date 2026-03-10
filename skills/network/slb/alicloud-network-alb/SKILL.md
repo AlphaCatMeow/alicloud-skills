@@ -1,6 +1,7 @@
 ---
 name: alicloud-network-alb
 description: Manage and troubleshoot Alibaba Cloud ALB (Application Load Balancer). Use whenever the user asks to inspect, create, change, or debug ALB instances, listeners, server groups, rules, certificates, ACLs, security policies, or health checks in Alibaba Cloud.
+version: 1.0.0
 ---
 
 Category: service

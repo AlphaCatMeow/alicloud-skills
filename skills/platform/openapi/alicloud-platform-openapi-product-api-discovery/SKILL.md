@@ -1,6 +1,7 @@
 ---
 name: alicloud-platform-openapi-product-api-discovery
 description: Discover and reconcile Alibaba Cloud product catalogs from Ticket System, Support & Service, and BSS OpenAPI; fetch OpenAPI product/version/API metadata; and summarize API coverage to plan new skills. Use when you need a complete product list, product-to-API mapping, or coverage/gap reports for skill generation.
+version: 1.0.0
 ---
 
 # Alibaba Cloud Product + API Discovery

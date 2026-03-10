@@ -1,6 +1,7 @@
 ---
 name: alicloud-ai-entry-modelstudio-matrix-test
 description: Minimal matrix test wrapper for alicloud-ai-entry-modelstudio-test.
+version: 1.0.0
 ---
 
 Category: test

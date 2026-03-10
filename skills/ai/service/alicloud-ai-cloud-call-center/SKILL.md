@@ -1,6 +1,7 @@
 ---
 name: alicloud-ai-cloud-call-center
 description: Manage Alibaba Cloud Cloud Call Center (CCC) via OpenAPI/SDK. Use whenever the user is working on CCC operations such as instance/resource management, configuration updates, status checks, and troubleshooting call-center API workflows.
+version: 1.0.0
 ---
 
 Category: service

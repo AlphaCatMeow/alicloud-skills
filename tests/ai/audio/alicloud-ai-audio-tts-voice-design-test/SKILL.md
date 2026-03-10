@@ -1,6 +1,7 @@
 ---
 name: alicloud-ai-audio-tts-voice-design-test
 description: Minimal voice design TTS smoke test for Model Studio Qwen TTS VD.
+version: 1.0.0
 ---
 
 Category: test

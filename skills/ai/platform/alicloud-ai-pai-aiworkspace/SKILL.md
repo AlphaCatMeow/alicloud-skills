@@ -1,6 +1,7 @@
 ---
 name: alicloud-ai-pai-aiworkspace
 description: Manage Alibaba Cloud PAI AIWorkspace (AIWorkSpace) via OpenAPI/SDK. Use whenever the user is operating AIWorkspace resources such as workspace/project inventory, create/update actions, status queries, permission or configuration troubleshooting, or automation around PAI workspace lifecycle.
+version: 1.0.0
 ---
 
 Category: service

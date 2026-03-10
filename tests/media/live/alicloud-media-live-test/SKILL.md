@@ -1,6 +1,7 @@
 ---
 name: alicloud-media-live-test
 description: Smoke test for alicloud-media-live. Validate minimal authentication, API reachability, and one read-only query path.
+version: 1.0.0
 ---
 
 Category: test

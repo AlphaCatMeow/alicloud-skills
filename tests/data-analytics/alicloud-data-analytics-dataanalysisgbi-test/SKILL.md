@@ -1,6 +1,7 @@
 ---
 name: alicloud-data-analytics-dataanalysisgbi-test
 description: Smoke test for alicloud-data-analytics-dataanalysisgbi. Validate minimal authentication, API reachability, and one read-only query path.
+version: 1.0.0
 ---
 
 Category: test

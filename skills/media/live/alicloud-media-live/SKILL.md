@@ -1,6 +1,7 @@
 ---
 name: alicloud-media-live
 description: Manage Alibaba Cloud ApsaraVideo Live resources and workflows via OpenAPI/SDK. Use for live domain configuration, stream ingest and playback setup, recording/transcoding templates, monitoring queries, and live stream operations.
+version: 1.0.0
 ---
 
 Category: service

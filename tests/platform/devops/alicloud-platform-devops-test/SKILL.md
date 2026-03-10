@@ -1,6 +1,7 @@
 ---
 name: alicloud-platform-devops-test
 description: Smoke test for alicloud-platform-devops. Validate script compilation and one bounded DevOps metadata query path.
+version: 1.0.0
 ---
 
 Category: test

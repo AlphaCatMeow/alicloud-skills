@@ -1,6 +1,7 @@
 ---
 name: alicloud-compute-fc-serverless-devs-test
 description: Smoke test for alicloud-compute-fc-serverless-devs. Validate minimal authentication, API reachability, and one read-only query path.
+version: 1.0.0
 ---
 
 Category: test

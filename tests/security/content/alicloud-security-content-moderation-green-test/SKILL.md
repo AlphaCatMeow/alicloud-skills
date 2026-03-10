@@ -1,6 +1,7 @@
 ---
 name: alicloud-security-content-moderation-green-test
 description: Smoke test for alicloud-security-content-moderation-green. Validate minimal authentication, API reachability, and one read-only query path.
+version: 1.0.0
 ---
 
 Category: test

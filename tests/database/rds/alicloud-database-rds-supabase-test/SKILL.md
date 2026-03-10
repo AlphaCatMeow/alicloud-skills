@@ -1,6 +1,7 @@
 ---
 name: alicloud-database-rds-supabase-test
 description: Minimal smoke test for RDS Supabase skill. Validate endpoint reachability and one list/detail API.
+version: 1.0.0
 ---
 
 Category: test

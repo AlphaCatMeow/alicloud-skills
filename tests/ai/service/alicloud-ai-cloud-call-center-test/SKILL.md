@@ -1,6 +1,7 @@
 ---
 name: alicloud-ai-cloud-call-center-test
 description: Smoke test for alicloud-ai-cloud-call-center. Validate minimal authentication, API reachability, and one read-only query path.
+version: 1.0.0
 ---
 
 Category: test

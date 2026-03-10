@@ -1,6 +1,7 @@
 ---
 name: alicloud-ai-entry-modelstudio
 description: Route Alibaba Cloud Model Studio requests to the right local skill (Qwen Image, Qwen Image Edit, Wan Video, Wan R2V, Qwen TTS, Qwen ASR and advanced TTS variants). Use when the user asks for Model Studio without specifying a capability.
+version: 1.0.0
 ---
 
 Category: task

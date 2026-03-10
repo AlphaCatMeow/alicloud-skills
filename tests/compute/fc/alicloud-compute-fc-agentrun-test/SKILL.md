@@ -1,6 +1,7 @@
 ---
 name: alicloud-compute-fc-agentrun-test
 description: Smoke test for alicloud-compute-fc-agentrun. Validate minimal authentication, API reachability, and one read-only query path.
+version: 1.0.0
 ---
 
 Category: test

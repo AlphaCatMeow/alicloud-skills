@@ -1,6 +1,7 @@
 ---
 name: alicloud-ai-entry-modelstudio-test-test
 description: Smoke test for alicloud-ai-entry-modelstudio-test. Validate minimal authentication, API reachability, and one read-only query path.
+version: 1.0.0
 ---
 
 Category: test

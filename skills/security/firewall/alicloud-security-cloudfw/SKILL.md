@@ -1,6 +1,7 @@
 ---
 name: alicloud-security-cloudfw
 description: Manage Alibaba Cloud Cloud Firewall (Cloudfw) via OpenAPI/SDK. Use whenever the user requests firewall policy/resource operations, change management, status checks, or troubleshooting Cloud Firewall API workflows.
+version: 1.0.0
 ---
 
 Category: service

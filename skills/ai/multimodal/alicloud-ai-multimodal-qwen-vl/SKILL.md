@@ -1,6 +1,7 @@
 ---
 name: alicloud-ai-multimodal-qwen-vl
 description: Understand images with Alibaba Cloud Model Studio Qwen VL models (qwen3-vl-plus/qwen3-vl-flash and latest aliases). Use when building image Q&A, visual analysis, OCR-like extraction, chart/table reading, or screenshot understanding workflows.
+version: 1.0.0
 ---
 
 Category: provider

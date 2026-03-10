@@ -1,6 +1,7 @@
 ---
 name: alicloud-database-analyticdb-mysql
 description: Manage Alibaba Cloud AnalyticDB for MySQL (ADB) via OpenAPI/SDK. Use whenever the user needs AnalyticDB resource lifecycle and configuration operations, status checks, or troubleshooting ADB API and cluster workflow issues.
+version: 1.0.0
 ---
 
 Category: service

@@ -1,6 +1,7 @@
 ---
 name: alicloud-ai-search-opensearch
 description: Use OpenSearch vector search edition via the Python SDK (ha3engine) to push documents and run HA/SQL searches. Ideal for RAG and vector retrieval pipelines in Claude Code/Codex.
+version: 1.0.0
 ---
 
 Category: provider

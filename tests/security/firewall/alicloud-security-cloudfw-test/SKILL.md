@@ -1,6 +1,7 @@
 ---
 name: alicloud-security-cloudfw-test
 description: Minimal smoke test for Cloud Firewall skill. Validate read-only inventory query path.
+version: 1.0.0
 ---
 
 Category: test

@@ -1,6 +1,7 @@
 ---
 name: alicloud-ai-audio-tts-test
 description: Minimal TTS smoke test for Model Studio Qwen TTS.
+version: 1.0.0
 ---
 
 Category: test

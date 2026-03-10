@@ -1,6 +1,7 @@
 ---
 name: alicloud-ai-chatbot-test
 description: Smoke test for alicloud-ai-chatbot. Validate minimal authentication, API reachability, and one read-only query path.
+version: 1.0.0
 ---
 
 Category: test

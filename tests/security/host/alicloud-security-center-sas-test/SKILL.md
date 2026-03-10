@@ -1,6 +1,7 @@
 ---
 name: alicloud-security-center-sas-test
 description: Minimal smoke test for Security Center SAS skill. Validate read-only query flow.
+version: 1.0.0
 ---
 
 Category: test

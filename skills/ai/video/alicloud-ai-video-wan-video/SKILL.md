@@ -1,6 +1,7 @@
 ---
 name: alicloud-ai-video-wan-video
 description: Generate videos with Model Studio DashScope SDK using Wan i2v models (wan2.6-i2v-flash, wan2.6-i2v, wan2.6-i2v-us). Use when implementing or documenting video.generate requests/responses, mapping prompt/negative_prompt/duration/fps/size/seed/reference_image/motion_strength, or integrating video generation into the video-agent pipeline.
+version: 1.0.0
 ---
 
 Category: provider

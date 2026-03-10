@@ -1,6 +1,7 @@
 ---
 name: alicloud-data-lake-dlf
 description: Manage Alibaba Cloud Data Lake Formation (DataLake) via OpenAPI/SDK. Use whenever the user asks for DataLake catalog resource operations, configuration updates, status queries, or troubleshooting DataLake API workflows.
+version: 1.0.0
 ---
 
 Category: service

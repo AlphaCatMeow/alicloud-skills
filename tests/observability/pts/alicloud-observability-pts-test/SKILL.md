@@ -1,6 +1,7 @@
 ---
 name: alicloud-observability-pts-test
 description: Smoke test for alicloud-observability-pts. Validate script compilation and one bounded read-only PTS metadata query path.
+version: 1.0.0
 ---
 
 Category: test

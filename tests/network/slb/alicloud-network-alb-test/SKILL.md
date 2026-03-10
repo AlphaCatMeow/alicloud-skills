@@ -1,6 +1,7 @@
 ---
 name: alicloud-network-alb-test
 description: Smoke test for Alibaba Cloud ALB skill. Validates SDK auth, script compilation, list instances, and health check flows.
+version: 1.0.0
 ---
 
 Category: test

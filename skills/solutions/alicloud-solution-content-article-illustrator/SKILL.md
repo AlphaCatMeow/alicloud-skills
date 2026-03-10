@@ -1,6 +1,7 @@
 ---
 name: alicloud-solution-content-article-illustrator
 description: Use when the user needs an end-to-end article illustration workflow in this repository that preserves Type x Style planning, loads article-illustration preferences, recommends Alibaba Cloud image backends, and produces a Markdown article with inserted local image references.
+version: 1.0.0
 ---
 
 Category: solution

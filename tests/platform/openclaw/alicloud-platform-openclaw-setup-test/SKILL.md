@@ -1,6 +1,7 @@
 ---
 name: alicloud-platform-openclaw-setup-test
 description: Minimal smoke test for OpenClaw setup skill. Validate official channel discovery workflow, DingTalk/Feishu integrations, Discord token configuration, and gateway health checks with non-destructive commands.
+version: 1.0.0
 ---
 
 Category: test

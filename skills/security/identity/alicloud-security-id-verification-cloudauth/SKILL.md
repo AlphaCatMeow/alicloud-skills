@@ -1,6 +1,7 @@
 ---
 name: alicloud-security-id-verification-cloudauth
 description: Manage Alibaba Cloud ID Verification (Cloudauth) via OpenAPI/SDK. Use whenever the user is working on identity-verification resource operations, config updates, status checks, or troubleshooting Cloudauth API workflows.
+version: 1.0.0
 ---
 
 Category: service

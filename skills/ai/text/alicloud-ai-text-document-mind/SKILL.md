@@ -1,6 +1,7 @@
 ---
 name: alicloud-ai-text-document-mind
 description: Use Document Mind (DocMind) via Node.js SDK to submit document parsing jobs and poll results. Designed for Claude Code/Codex document understanding workflows.
+version: 1.0.0
 ---
 
 Category: provider

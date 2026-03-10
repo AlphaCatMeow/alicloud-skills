@@ -1,6 +1,7 @@
 ---
 name: alicloud-ai-search-milvus-test
 description: Smoke test for alicloud-ai-search-milvus. Validate minimal authentication, API reachability, and one read-only query path.
+version: 1.0.0
 ---
 
 Category: test

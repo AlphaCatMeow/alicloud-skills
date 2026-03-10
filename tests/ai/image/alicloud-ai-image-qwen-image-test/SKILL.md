@@ -1,6 +1,7 @@
 ---
 name: alicloud-ai-image-qwen-image-test
 description: Minimal image generation smoke test for Model Studio Qwen image.
+version: 1.0.0
 ---
 
 Category: test

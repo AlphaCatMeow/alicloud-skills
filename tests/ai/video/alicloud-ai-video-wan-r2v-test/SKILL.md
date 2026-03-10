@@ -1,6 +1,7 @@
 ---
 name: alicloud-ai-video-wan-r2v-test
 description: Minimal reference-to-video smoke test for Model Studio Wan R2V.
+version: 1.0.0
 ---
 
 Category: test

@@ -1,6 +1,7 @@
 ---
 name: alicloud-ai-content-aimiaobi
 description: Manage Alibaba Cloud Quan Miao (AiMiaoBi) via OpenAPI/SDK. Use whenever the user asks for Alibaba Cloud MiaoBi content operations, including listing resources, creating/updating configurations, querying runtime status, and diagnosing API or workflow failures.
+version: 1.0.0
 ---
 
 Category: service

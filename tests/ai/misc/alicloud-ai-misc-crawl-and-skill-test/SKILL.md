@@ -1,6 +1,7 @@
 ---
 name: alicloud-ai-misc-crawl-and-skill-test
 description: Minimal validation for crawl-and-skill workflow readiness.
+version: 1.0.0
 ---
 
 Category: test

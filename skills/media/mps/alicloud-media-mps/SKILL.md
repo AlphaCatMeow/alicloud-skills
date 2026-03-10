@@ -1,6 +1,7 @@
 ---
 name: alicloud-media-mps
 description: Manage Alibaba Cloud ApsaraVideo for Media Processing (MPS/MTS) resources and workflows via OpenAPI/SDK. Use for media ingest and metadata tasks, transcoding/snapshot jobs, pipeline/template/workflow operations, and MPS job troubleshooting.
+version: 1.0.0
 ---
 
 Category: service

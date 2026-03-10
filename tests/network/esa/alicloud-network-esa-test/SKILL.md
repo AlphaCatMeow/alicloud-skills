@@ -1,6 +1,7 @@
 ---
 name: alicloud-network-esa-test
 description: Minimal smoke test for Alibaba Cloud ESA skill. Validate OpenAPI metadata discovery and API inventory generation for product ESA.
+version: 1.0.0
 ---
 
 Category: test

@@ -1,6 +1,7 @@
 ---
 name: alicloud-ai-multimodal-qwen-vl-test
 description: Minimal image-understanding smoke test for Model Studio Qwen VL.
+version: 1.0.0
 ---
 
 Category: test

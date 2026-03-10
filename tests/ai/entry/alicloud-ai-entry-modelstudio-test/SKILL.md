@@ -1,6 +1,7 @@
 ---
 name: alicloud-ai-entry-modelstudio-test
 description: Minimal routing smoke test for alicloud-ai-entry-modelstudio entry skill.
+version: 1.0.0
 ---
 
 Category: test

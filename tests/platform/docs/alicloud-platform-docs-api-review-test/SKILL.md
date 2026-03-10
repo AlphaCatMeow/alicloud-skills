@@ -1,6 +1,7 @@
 ---
 name: alicloud-platform-docs-api-review-test
 description: Smoke test for alicloud-platform-docs-api-review. Validate minimal authentication, API reachability, and one read-only query path.
+version: 1.0.0
 ---
 
 Category: test

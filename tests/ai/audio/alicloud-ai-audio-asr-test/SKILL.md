@@ -1,6 +1,7 @@
 ---
 name: alicloud-ai-audio-asr-test
 description: Minimal non-realtime ASR smoke test for Model Studio Qwen ASR.
+version: 1.0.0
 ---
 
 Category: test

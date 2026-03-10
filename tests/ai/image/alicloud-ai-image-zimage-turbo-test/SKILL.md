@@ -1,6 +1,7 @@
 ---
 name: alicloud-ai-image-zimage-turbo-test
 description: Smoke test for alicloud-ai-image-zimage-turbo. Validate minimal authentication, API reachability, and one read-only query path.
+version: 1.0.0
 ---
 
 Category: test

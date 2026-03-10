@@ -1,6 +1,7 @@
 ---
 name: alicloud-platform-aliyun-cli-test
 description: Minimal smoke test for generic Alibaba Cloud aliyun CLI skill. Validate CLI install, auth profile, and one read-only API call.
+version: 1.0.0
 ---
 
 Category: test

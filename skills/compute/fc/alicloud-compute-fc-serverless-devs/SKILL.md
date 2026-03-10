@@ -1,6 +1,7 @@
 ---
 name: alicloud-compute-fc-serverless-devs
 description: Alibaba Cloud Function Compute (FC 3.0) skill for installing and using Serverless Devs to create, deploy, invoke, and remove a Python function. Use when users need CLI-based FC quick start or Serverless Devs setup guidance.
+version: 1.0.0
 ---
 
 Category: tool

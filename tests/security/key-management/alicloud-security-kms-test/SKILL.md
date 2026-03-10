@@ -1,6 +1,7 @@
 ---
 name: alicloud-security-kms-test
 description: Minimal smoke test for KMS skill. Validate auth and read-only key listing path.
+version: 1.0.0
 ---
 
 Category: test

@@ -1,6 +1,7 @@
 ---
 name: alicloud-backup-bdrc
 description: Manage Alibaba Cloud Backup and Disaster Recovery Center (BDRC) via OpenAPI/SDK. Use whenever the user needs backup/disaster-recovery resource operations, including inventory, policy/configuration changes, status checks, and troubleshooting BDRC workflows.
+version: 1.0.0
 ---
 
 Category: service

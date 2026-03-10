@@ -1,6 +1,7 @@
 ---
 name: alicloud-network-cdn
 description: Manage Alibaba Cloud CDN via OpenAPI/SDK. Use for CDN domain onboarding and lifecycle operations, cache refresh/preload, HTTPS certificate updates, and log/monitoring data queries.
+version: 1.0.0
 ---
 
 Category: service

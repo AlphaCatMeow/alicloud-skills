@@ -1,6 +1,7 @@
 ---
 name: alicloud-compute-ecs-test
 description: Minimal smoke test for ECS skill. Validate auth, region reachability, and DescribeInstances query path.
+version: 1.0.0
 ---
 
 Category: test

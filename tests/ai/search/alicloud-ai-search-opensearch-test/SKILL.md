@@ -1,6 +1,7 @@
 ---
 name: alicloud-ai-search-opensearch-test
 description: Smoke test for alicloud-ai-search-opensearch. Validate minimal authentication, API reachability, and one read-only query path.
+version: 1.0.0
 ---
 
 Category: test

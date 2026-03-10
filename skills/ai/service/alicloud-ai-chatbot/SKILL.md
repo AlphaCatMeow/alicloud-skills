@@ -1,6 +1,7 @@
 ---
 name: alicloud-ai-chatbot
 description: Manage Alibaba Cloud beebot (Chatbot) via OpenAPI/SDK. Use whenever the user asks to configure, query, or troubleshoot Alibaba Cloud chatbot resources, including bot inventory, configuration changes, status checks, and API-level diagnostics.
+version: 1.0.0
 ---
 
 Category: service

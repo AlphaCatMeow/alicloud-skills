@@ -1,6 +1,7 @@
 ---
 name: alicloud-ai-image-qwen-image-edit-test
 description: Minimal image editing smoke test for Model Studio Qwen Image Edit.
+version: 1.0.0
 ---
 
 Category: test

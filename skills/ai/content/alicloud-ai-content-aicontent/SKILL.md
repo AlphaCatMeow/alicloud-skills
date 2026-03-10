@@ -1,6 +1,7 @@
 ---
 name: alicloud-ai-content-aicontent
 description: Manage Alibaba Cloud AIContent (AiContent) via OpenAPI/SDK. Use whenever the user needs AI content generation or content workflow operations in Alibaba Cloud, including listing assets, creating/updating generation configurations, checking task status, or troubleshooting failed content jobs.
+version: 1.0.0
 ---
 
 Category: service

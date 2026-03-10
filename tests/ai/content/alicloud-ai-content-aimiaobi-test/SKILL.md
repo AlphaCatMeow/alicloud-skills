@@ -1,6 +1,7 @@
 ---
 name: alicloud-ai-content-aimiaobi-test
 description: Smoke test for alicloud-ai-content-aimiaobi. Validate minimal authentication, API reachability, and one read-only query path.
+version: 1.0.0
 ---
 
 Category: test

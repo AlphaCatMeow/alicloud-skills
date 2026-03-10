@@ -1,6 +1,7 @@
 ---
 name: alicloud-media-video-translation
 description: Create and manage Alibaba Cloud IMS video translation jobs via OpenAPI (subtitle/voice/face). Use when you need API-based video translation, status polling, and job management.
+version: 1.0.0
 ---
 
 Category: service

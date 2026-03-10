@@ -1,6 +1,7 @@
 ---
 name: alicloud-platform-devops
 description: Manage Alibaba Cloud DevOps (Yunxiao 2020) via OpenAPI/SDK. Use for project/repository/pipeline resource discovery, read-only inspection, and safe change planning before mutating operations.
+version: 1.0.0
 ---
 
 Category: service

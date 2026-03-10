@@ -1,6 +1,7 @@
 ---
 name: alicloud-database-analyticdb-mysql-test
 description: Smoke test for alicloud-database-analyticdb-mysql. Validate minimal authentication, API reachability, and one read-only query path.
+version: 1.0.0
 ---
 
 Category: test

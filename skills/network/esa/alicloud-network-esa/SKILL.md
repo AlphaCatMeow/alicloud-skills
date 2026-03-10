@@ -1,6 +1,7 @@
 ---
 name: alicloud-network-esa
 description: Manage Alibaba Cloud Edge Security Acceleration (ESA) via OpenAPI/SDK. Use for site lifecycle management, DNS/record operations, origin and cache rules, WAF/security policy management, and diagnostics/troubleshooting for ESA resources.
+version: 1.0.0
 ---
 
 Category: service

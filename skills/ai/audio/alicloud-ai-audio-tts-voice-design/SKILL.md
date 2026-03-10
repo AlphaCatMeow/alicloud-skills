@@ -1,6 +1,7 @@
 ---
 name: alicloud-ai-audio-tts-voice-design
 description: Voice design workflows with Alibaba Cloud Model Studio Qwen TTS VD models. Use when creating custom synthetic voices from text descriptions and using them for speech synthesis.
+version: 1.0.0
 ---
 
 Category: provider

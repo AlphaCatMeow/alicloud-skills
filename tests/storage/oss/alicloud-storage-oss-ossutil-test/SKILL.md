@@ -1,6 +1,7 @@
 ---
 name: alicloud-storage-oss-ossutil-test
 description: Minimal OSSUTIL 2.0 smoke tests. Validate config, list bucket, and upload/download with OSS.
+version: 1.0.0
 ---
 
 Category: test

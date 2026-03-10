@@ -1,6 +1,7 @@
 ---
 name: alicloud-security-id-verification-cloudauth-test
 description: Smoke test for alicloud-security-id-verification-cloudauth. Validate minimal authentication, API reachability, and one read-only query path.
+version: 1.0.0
 ---
 
 Category: test

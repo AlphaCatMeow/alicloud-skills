@@ -1,6 +1,7 @@
 ---
 name: alicloud-network-dns-cli
 description: Alibaba Cloud DNS (Alidns) CLI skill. Use to query, add, and update DNS records via aliyun-cli, including CNAME setup for Function Compute custom domains.
+version: 1.0.0
 ---
 
 Category: tool

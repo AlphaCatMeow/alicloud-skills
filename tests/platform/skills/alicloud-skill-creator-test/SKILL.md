@@ -1,6 +1,7 @@
 ---
 name: alicloud-skill-creator-test
 description: Smoke test for alicloud-skill-creator. Validate repository path conventions, frontmatter quality, script compilation, and README index refresh workflow.
+version: 1.0.0
 ---
 
 Category: test

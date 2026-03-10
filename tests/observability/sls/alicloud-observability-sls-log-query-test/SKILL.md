@@ -1,6 +1,7 @@
 ---
 name: alicloud-observability-sls-log-query-test
 description: Minimal smoke test for SLS log query skill. Validate SDK auth and one bounded query.
+version: 1.0.0
 ---
 
 Category: test

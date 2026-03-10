@@ -1,6 +1,7 @@
 ---
 name: alicloud-data-lake-dlf-next-test
 description: Minimal smoke test for DlfNext skill. Validate metadata discovery and one read-only API call.
+version: 1.0.0
 ---
 
 Category: test

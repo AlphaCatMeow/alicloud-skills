@@ -1,6 +1,7 @@
 ---
 name: alicloud-ai-audio-tts-voice-clone-test
 description: Minimal voice cloning TTS smoke test for Model Studio Qwen TTS VC.
+version: 1.0.0
 ---
 
 Category: test

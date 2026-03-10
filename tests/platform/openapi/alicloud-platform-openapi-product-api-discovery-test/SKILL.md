@@ -1,6 +1,7 @@
 ---
 name: alicloud-platform-openapi-product-api-discovery-test
 description: Minimal smoke test for product API discovery skill. Validate product pull, merge, and one metadata fetch.
+version: 1.0.0
 ---
 
 Category: test

@@ -1,6 +1,7 @@
 ---
 name: alicloud-compute-fc-agentrun
 description: Manage Function Compute AgentRun resources via OpenAPI (runtime, sandbox, model, memory, credentials). Use for creating runtimes/endpoints, querying status, and troubleshooting AgentRun workflows.
+version: 1.0.0
 ---
 
 Category: service

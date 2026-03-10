@@ -1,6 +1,7 @@
 ---
 name: alicloud-ai-video-wan-video-test
 description: Minimal video generation smoke test for Model Studio Wan Video.
+version: 1.0.0
 ---
 
 Category: test

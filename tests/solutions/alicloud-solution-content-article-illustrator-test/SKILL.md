@@ -1,6 +1,7 @@
 ---
 name: alicloud-solution-content-article-illustrator-test
 description: Smoke test for alicloud-solution-content-article-illustrator. Validate solution-skill structure, compatibility-oriented documentation, prompt-before-image workflow, backend recommendation policy, and final Markdown output artifacts.
+version: 1.0.0
 ---
 
 Category: test

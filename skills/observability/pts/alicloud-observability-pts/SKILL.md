@@ -1,6 +1,7 @@
 ---
 name: alicloud-observability-pts
 description: Manage Alibaba Cloud Performance Testing Service (PTS) via OpenAPI/SDK. Use for scene lifecycle operations, test start/stop control, report retrieval, and metadata-driven API discovery before production changes.
+version: 1.0.0
 ---
 
 Category: service

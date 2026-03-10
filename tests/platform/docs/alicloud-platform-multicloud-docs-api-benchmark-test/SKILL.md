@@ -1,6 +1,7 @@
 ---
 name: alicloud-platform-multicloud-docs-api-benchmark-test
 description: Smoke test for alicloud-platform-multicloud-docs-api-benchmark. Validate minimal authentication, API reachability, and one read-only query path.
+version: 1.0.0
 ---
 
 Category: test

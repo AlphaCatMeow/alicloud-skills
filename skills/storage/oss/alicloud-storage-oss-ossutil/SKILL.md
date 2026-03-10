@@ -1,6 +1,7 @@
 ---
 name: alicloud-storage-oss-ossutil
 description: Alibaba Cloud OSS CLI (ossutil 2.0) skill. Install, configure, and operate OSS from the command line based on the official ossutil overview.
+version: 1.0.0
 ---
 
 Category: tool
