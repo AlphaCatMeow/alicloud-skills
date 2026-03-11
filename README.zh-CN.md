@@ -296,6 +296,7 @@ dashscope_api_key = 你的DashScope API Key
 | network/esa | alicloud-network-esa | 技能 `alicloud-network-esa` 的能力说明，详见对应 SKILL.md。 | `skills/network/esa/alicloud-network-esa` |
 | network/slb | alicloud-network-alb | 管理和排障阿里云 ALB（应用型负载均衡）。覆盖实例、监听、服务器组、转发规则、证书、ACL、安全策略、健康检查及异步任务轮询的全生命周期管理，包含 28 个 CLI 脚本。 | `skills/network/slb/alicloud-network-alb` |
 | observability/pts | alicloud-observability-pts | 技能 `alicloud-observability-pts` 的能力说明，详见对应 SKILL.md。 | `skills/observability/pts/alicloud-observability-pts` |
+| observability/sls | alicloud-observability-openclaw-sls-integration | 技能 `alicloud-observability-openclaw-sls-integration` 的能力说明，详见对应 SKILL.md。 | `skills/observability/sls/alicloud-observability-openclaw-sls-integration` |
 | observability/sls | alicloud-observability-sls-log-query | 技能 `alicloud-observability-sls-log-query` 的能力说明，详见对应 SKILL.md。 | `skills/observability/sls/alicloud-observability-sls-log-query` |
 | platform/cli | alicloud-platform-aliyun-cli | 通用 Alibaba Cloud CLI（aliyun）技能，覆盖安装、凭证/配置、API 发现与跨产品 OpenAPI 命令行调用。 | `skills/platform/cli/alicloud-platform-aliyun-cli` |
 | platform/devops | alicloud-platform-devops | 技能 `alicloud-platform-devops` 的能力说明，详见对应 SKILL.md。 | `skills/platform/devops/alicloud-platform-devops` |

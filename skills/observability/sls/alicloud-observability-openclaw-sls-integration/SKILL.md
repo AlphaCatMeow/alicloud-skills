@@ -1,6 +1,6 @@
 ---
-name: aliyun-observability
-description: "Use this skill whenever the user asks to integrate OpenClaw with Alibaba Cloud Observability/SLS, set up SLS ingestion, create LoongCollector machine groups, create index or dashboards, or configure Logtail collection and binding. It performs an end-to-end, idempotent Linux workflow using aliyun CLI."
+name: alicloud-observability-openclaw-sls-integration
+description: "Use when the user needs to integrate OpenClaw with Alibaba Cloud SLS/Observability, including collector setup, machine groups, indexes, dashboards, collection configs, or Logtail bindings on Linux."
 metadata:
   {
     "openclaw":
@@ -11,7 +11,7 @@ metadata:
   }
 ---
 
-# Alibaba Cloud Observability Integration (OpenClaw)
+# OpenClaw SLS Integration
 
 This skill provisions Alibaba Cloud SLS observability for OpenClaw on Linux and keeps reruns safe.
 
@@ -290,4 +290,3 @@ aliyun sls GetConfig --project "$PROJECT" --configName "openclaw-audit_${LOGSTOR
 Read reference files only when needed:
 - Use `cli-commands.md` for step-by-step troubleshooting.
 - Use JSON templates when creating/updating resources.
-
