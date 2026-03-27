@@ -279,6 +279,8 @@ dashscope_api_key = 你的DashScope API Key
 | ai/video | alicloud-ai-video-animate-anyone | 技能 `alicloud-ai-video-animate-anyone` 的能力說明，詳見對應 SKILL.md。 | `skills/ai/video/alicloud-ai-video-animate-anyone` |
 | ai/video | alicloud-ai-video-digital-human | 技能 `alicloud-ai-video-digital-human` 的能力說明，詳見對應 SKILL.md。 | `skills/ai/video/alicloud-ai-video-digital-human` |
 | ai/video | alicloud-ai-video-emo | 技能 `alicloud-ai-video-emo` 的能力說明，詳見對應 SKILL.md。 | `skills/ai/video/alicloud-ai-video-emo` |
+| ai/video | alicloud-ai-video-emoji | 技能 `alicloud-ai-video-emoji` 的能力說明，詳見對應 SKILL.md。 | `skills/ai/video/alicloud-ai-video-emoji` |
+| ai/video | alicloud-ai-video-liveportrait | 技能 `alicloud-ai-video-liveportrait` 的能力說明，詳見對應 SKILL.md。 | `skills/ai/video/alicloud-ai-video-liveportrait` |
 | ai/video | alicloud-ai-video-retalk | 技能 `alicloud-ai-video-retalk` 的能力說明，詳見對應 SKILL.md。 | `skills/ai/video/alicloud-ai-video-retalk` |
 | ai/video | alicloud-ai-video-wan-edit | 技能 `alicloud-ai-video-wan-edit` 的能力說明，詳見對應 SKILL.md。 | `skills/ai/video/alicloud-ai-video-wan-edit` |
 | ai/video | alicloud-ai-video-wan-r2v | 技能 `alicloud-ai-video-wan-r2v` 的能力說明，詳見對應 SKILL.md。 | `skills/ai/video/alicloud-ai-video-wan-r2v` |

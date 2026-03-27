@@ -35,7 +35,9 @@ python -m pip install dashscope
 | Reference-to-video (r2v) | `skills/ai/video/alicloud-ai-video-wan-r2v/` |
 | Digital human talking / singing avatar | `skills/ai/video/alicloud-ai-video-digital-human/` |
 | Expressive portrait video (EMO) | `skills/ai/video/alicloud-ai-video-emo/` |
+| Lightweight portrait animation (LivePortrait) | `skills/ai/video/alicloud-ai-video-liveportrait/` |
 | Motion transfer / dancing avatar (AnimateAnyone) | `skills/ai/video/alicloud-ai-video-animate-anyone/` |
+| Emoji / meme portrait video | `skills/ai/video/alicloud-ai-video-emoji/` |
 | Text-to-speech (TTS) | `skills/ai/audio/alicloud-ai-audio-tts/` |
 | Speech recognition/transcription (ASR) | `skills/ai/audio/alicloud-ai-audio-asr/` |
 | Realtime speech recognition | `skills/ai/audio/alicloud-ai-audio-asr-realtime/` |
